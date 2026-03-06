@@ -2,102 +2,120 @@
 **Summer Semester 2026 · University of Konstanz**
 
 This seminar focuses on the replication and extension of computational studies using reinforcement learning to analyze and design social and economic mechanisms. It emphasizes research design and data collection through simulation-based experiments, while also engaging students in theory-driven hypothesis development and normative reflection on algorithmic governance.
-<table>
-<tr>
-<td align="center" width="25%">
-
-### APR 2026
-<pre>
-Mo Tu We Th Fr Sa Su
-       1  2  3  4  5
- 6  7 <mark>8</mark>  9 10 11 12
-13 14 <mark>15</mark> 16 17 18 19
-20 21 <mark>22</mark> 23 24 25 26
-27 28 <mark>29</mark> 30 __ __ __
-</pre>
-
-</td>
-<td align="center" width="25%">
-
-### MAY 2026
-<pre>
-Mo Tu We Th Fr Sa Su
-             1  2  3
- 4  5 <mark>6</mark>  7  8  9 10
-11 12 <mark>13</mark> 14 15 16 17
-18 19 <mark>20</mark> 21 22 23 24
-25 26 <mark>27</mark> 28 29 30 31
-</pre>
-
-</td>
-<td align="center" width="25%">
-
-### JUN 2026
-<pre>
-Mo Tu We Th Fr Sa Su
- 1  2  3  4  5  6  7
- 8  9 <mark>10</mark> 11 12 13 14
-15 16 <mark>17</mark> 18 19 20 21
-22 23 <mark>24</mark> 25 26 27 28
-29 30 __ __ __ __ __
-</pre>
-
-</td>
-<td align="center" width="25%">
-
-### JUL 2026
-<pre>
-Mo Tu We Th Fr Sa Su
-       1  2  3  4  5
- 6  7 <mark>8</mark>  9 10 11 12
-13 14 <mark>15</mark> 16 17 18 19
-20 21 22 23 24 25 26
-27 28 29 30 31 __ __
-</pre>
-
-</td>
-</tr>
-</table>
-
-> **Legend:** <mark>highlighted</mark> = lecture day  
-> **Period:** 07 Apr–18 Jul 2026 · **Lecture-free week:** 01–07 Jun 2026 ⚠️
----
-
-## Core Readings
-
-- **Duéñez-Guzmán, E. A., et al. (2024).**  
-  *Deep mechanism design: Learning social and economic policies for human benefit.* PNAS.
-  https://doi.org/10.1073/pnas.2319949121
-
-- **Milojević, S., et al. (2025).**  
-  *Deep reinforcement learning can promote sustainable human behaviour in a common-pool resource problem.* Nature Communications.  
-  https://doi.org/10.1038/s41467-025-58043-7
-
-- **Leibo, J. Z., et al. (2024).**  
-  *Tabula rasa agents display emergent in-group behavior.* PNAS.
-  https://doi.org/10.1073/pnas.2319947121
 
 
 
 ## Schedule
 
-| Week | Date | Topic |
-|------|------|-------|
-| Week 1 | 07–11 Apr | Introduction: Replication, Reinforcement Learning, and Mechanism Design |
-| Week 2 | 14–18 Apr | Reinforcement Learning Basics for Social Science |
-| Week 3 | 21–25 Apr | Mechanism Design with Learning |
-| Week 4 | 28 Apr–02 May | Common-Pool Resources and Sustainable Behavior |
-| Week 5 | 05–09 May | Multi-Agent Learning and Emergent Social Behavior |
-| Week 6 | 12–16 May | Research Design Critique and Replication Planning |
-| Week 7 | 19–23 May | Implementing Replications |
-| Week 8 | 26–29 May | Data Collection and Analysis in Simulation Studies |
-| Week 9 | 01–07 Jun | **Lecture-free week** |
-| Week 10 | 08–12 Jun | Extending Replication Studies: Theory-Driven Model Changes |
-| Week 11 | 15–19 Jun | Ethics, Normativity, and Limits of Simulation |
-| Week 12 | 22–26 Jun | Writing Replication Papers |
-| Week 13 | 29 Jun–03 Jul | Presenting Computational Research |
-| Week 14 | 06–10 Jul | Pre-printing, Open Science, and GitHub Workflows |
-| Week 15 | 13–18 Jul | Final Presentations and Course Synthesis |
+<table cellpadding="1" cellspacing="0" style="line-height:0.6; border-collapse:collapse; font-size:0.9em; width:100%; table-layout:fixed;">
+<thead>
+<tr>
+<th>Phase</th>
+<th>Week</th>
+<th style="white-space:nowrap;">Date</th>
+<th>Topic/Activity</th>
+<th>Workload</th>
+</tr>
+</thead>
+<tbody style="vertical-align:top; line-height:0.6;">
+<tr>
+<td rowspan="7">Generating<br>Ideas</td>
+<td>🟦 1</td>
+<td style="white-space:nowrap;">09&nbsp;Apr</td>
+<td><a href="./Topics/game_theory.md">Game theory + LLMs: what can we learn?</a></td>
+<td style="white-space: nowrap;"><code>░░░░░░░░░░</code>&nbsp;0&nbsp;h</td>
+</tr>
+<tr>
+<td>🟦 2</td>
+<td style="white-space:nowrap;">16&nbsp;Apr</td>
+<td><a href="./Topics/llm-simulation.md">LLM societies and simulated worlds</a></td>
+<td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
+</tr>
+<tr>
+<td>🟦 3</td>
+<td style="white-space:nowrap;">23&nbsp;Apr</td>
+<td><a href="./Topics/llm-simulation.md">LLM societies and world simulations II</a></td>
+<td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
+</tr>
+<tr>
+<td>🟦 4</td>
+<td style="white-space:nowrap;">30&nbsp;Apr</td>
+<td><a href="./Topics/inverse_game_theory.md">Reinforcement learning for social systems I</a></td>
+<td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
+</tr>
+<tr>
+<td>🟦 5</td>
+<td style="white-space:nowrap;">07&nbsp;May</td>
+<td><a href="./Topics/inverse_game_theory.md">Reinforcement learning for social systems II</a></td>
+<td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
+</tr>
+<tr>
+<td>—</td>
+<td style="white-space:nowrap;">14&nbsp;May</td>
+<td>Christy Himmelfart, no lecture</td>
+<td style="white-space: nowrap;"><code>████████░░</code>&nbsp;14&nbsp;h</td>
+</tr>
+<tr>
+<td>🟦 6</td>
+<td style="white-space:nowrap;">21&nbsp;May</td>
+<td><a href="./Topics/inverse_game_theory.md">Inverse game theory</a></td>
+<td style="white-space: nowrap;"><code>████████░░</code>&nbsp;14&nbsp;h</td>
+</tr>
+<tr>
+<td rowspan="4">Scientific<br>Contribution</td>
+<td>🟨 7</td>
+<td style="white-space:nowrap;">28&nbsp;May</td>
+<td>1:1 Feedback on Project Idea</td>
+<td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
+</tr>
+<tr>
+<td>🟨 8</td>
+<td style="white-space:nowrap;">11&nbsp;Jun</td>
+<td>Project Presentations (Introduction + Literature Section)</td>
+<td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
+</tr>
+<tr>
+<td>🟨 9</td>
+<td style="white-space:nowrap;">18&nbsp;Jun</td>
+<td>Results Clinic — What have you found out? Tell a story</td>
+<td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
+</tr>
+<tr>
+<td>🟨 10</td>
+<td style="white-space:nowrap;">25&nbsp;Jun</td>
+<td>Writing & Figures Clinic — Refining writing, title, and figure captions</td>
+<td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
+</tr>
+<tr>
+<td rowspan="2">Marketing<br>Your Idea</td>
+<td>🟩 11</td>
+<td style="white-space:nowrap;">09&nbsp;Jul</td>
+<td>Feedback on Video Presentation &amp; Slides / Online Post / GitHub Repo</td>
+<td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
+</tr>
+<tr>
+<td>🟩 12</td>
+<td style="white-space:nowrap;">16&nbsp;Jul</td>
+<td>Recording of Final Presentation</td>
+<td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
+</tr>
+<tr>
+<td rowspan="2">Post-course</td>
+<td>⬜ 13</td>
+<td style="white-space:nowrap;">—</td>
+<td>Recommended break week — do not work on the project.</td>
+<td style="white-space: nowrap;"><code>░░░░░░░░░░</code>&nbsp;0&nbsp;h</td>
+</tr>
+<tr>
+<td>⬜ 14</td>
+<td style="white-space:nowrap;">—</td>
+<td>Final revision of the paper based on feedback and lessons from the course. Submit final version.</td>
+<td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
+</tr>
+</tbody>
+</table>
+
+<p>7 ECTS ~ 210 h | class time ~20 h | independent work target ~190 h</p>
 
 
 ---
