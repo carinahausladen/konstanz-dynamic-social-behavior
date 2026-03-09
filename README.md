@@ -28,13 +28,13 @@ This seminar focuses on the replication and extension of computational studies u
 <tr>
 <td>🟦 2</td>
 <td style="white-space:nowrap;">16&nbsp;Apr</td>
-<td><a href="./Topics/llm-simulation.md">LLM societies and simulated worlds</a></td>
+<td><a href="./Topics/llm-simulation.md">LLM societies and simulated worlds I</a></td>
 <td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
 </tr>
 <tr>
 <td>🟦 3</td>
 <td style="white-space:nowrap;">23&nbsp;Apr</td>
-<td><a href="./Topics/llm-simulation.md">LLM societies and world simulations II</a></td>
+<td><a href="./Topics/llm-simulation.md">LLM societies and simulated worlds II</a></td>
 <td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
 </tr>
 <tr>
