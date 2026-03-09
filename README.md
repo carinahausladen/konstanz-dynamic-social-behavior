@@ -1,8 +1,6 @@
 # Computational Methods for Modelling Dynamic Social Behavior
 **Summer Semester 2026 · University of Konstanz**
-
-This seminar focuses on the replication and extension of computational studies using reinforcement learning to analyze and design social and economic mechanisms. It emphasizes research design and data collection through simulation-based experiments, while also engaging students in theory-driven hypothesis development and normative reflection on algorithmic governance.
-
+Thursdays, 13:30–15:00
 
 
 ## Schedule
@@ -129,9 +127,9 @@ This seminar focuses on the replication and extension of computational studies u
 
 ## Activities & Assessment
 
-### Reading Notes (ungraded, required)
+### Reading Notes (ungraded)
 
-Short written notes to support careful reading and active participation. For each core paper, students should briefly address:
+Short (!) written notes to support careful reading and active participation. For each core paper, students should briefly (1 sentence each) address:
 
 - **Core contribution:** What problem does the paper address and what does it contribute?
 - **Methods:** What are the key modeling or reinforcement-learning choices?
@@ -144,12 +142,11 @@ These notes are **not graded**, but they are required preparation for discussion
 
 ### Discussant Role (graded, 30%)
 
-Each student serves once as a **discussant** for one core paper.
+Each student serves once (or twice, depending on class size) as a **discussant** for one core paper.
 
 **Responsibilities:**
-- Read the assigned paper in depth (methods, design choices, assumptions).
-- Identify strengths, limitations, and open questions relevant for replication.
-- Frame the paper as a **starting point for future work**, not a finished product.
+- Read the assigned paper in depth.
+- Identify strengths, limitations, and open questions relevant for replication/extension.
 - Prepare a small number of slides summarizing:
   - the research question and method,
   - key design decisions,
@@ -157,15 +154,13 @@ Each student serves once as a **discussant** for one core paper.
 
 **Format:**
 - 12–15 minute presentation  
-- 5–8 minutes of guided discussion with prepared prompts
-
-The goal is to **enable replication-oriented thinking**, not to defend or critique for its own sake.
+- 5–8 minutes of guided discussion
 
 
 
 ### Replication & Extension Project (graded, 70%)
 
-The group project is the core component of the seminar. Students work in small groups to **replicate and extend** one of the course papers (or a clearly defined part of it).
+The (group) project is the core component of the seminar. Students work in small groups to **replicate and extend** an idea of their own.
 
 **Project goals:**
 - Reproduce a core result, model, or experimental setup.
@@ -183,12 +178,3 @@ The group project is the core component of the seminar. Students work in small g
   - instructions to reproduce results,
   - clear version control.
 - A **Contributions section** specifying each group member’s role.
-
-**Deliverables & milestones:**
-- Project proposal presentation (ungraded)
-- Code checkpoint (ungraded)
-- Writing outline checkpoint (ungraded)
-- Final presentation (graded)
-- Final paper and code submission (graded)
-
-Clear communication—through writing, code, and presentations—is considered an essential part of the project.
