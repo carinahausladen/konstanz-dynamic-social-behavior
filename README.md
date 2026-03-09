@@ -96,7 +96,7 @@ This seminar focuses on the replication and extension of computational studies u
 <tr>
 <td>🟩 12</td>
 <td style="white-space:nowrap;">16&nbsp;Jul</td>
-<td>Recording of Final Presentation</td>
+<td>Final Presentation</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
 </tr>
 <tr>
