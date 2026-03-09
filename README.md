@@ -118,16 +118,10 @@ Thursdays, 13:30–15:00
 
 ---
 
-## Learning Goals
-
-- Replicate and critically evaluate published studies that use reinforcement learning and mechanism design to analyze social, economic, and political systems.
-- Design, implement, and analyze extensions of existing computational models by modifying environments, reward functions, and agent architectures.
-- Translate theoretical and normative concepts (e.g. cooperation, fairness, sustainability, discrimination) into operational computational frameworks and interpret their empirical implications.
----
 
 ## Activities & Assessment
 
-### Reading Notes (ungraded)
+### 1. Reading Notes (ungraded)
 
 Short (!) written notes to support careful reading and active participation. For each core paper, students should briefly (1 sentence each) address:
 
@@ -138,9 +132,9 @@ Short (!) written notes to support careful reading and active participation. For
 
 These notes are **not graded**, but they are required preparation for discussion and project work.
 
+---
 
-
-### Discussant Role (graded, 30%)
+### 2. Discussant Role (graded, 30%)
 
 Each student serves once (or twice, depending on class size) as a **discussant** for one core paper.
 
@@ -156,9 +150,9 @@ Each student serves once (or twice, depending on class size) as a **discussant**
 - 12–15 minute presentation  
 - 5–8 minutes of guided discussion
 
+---
 
-
-### Replication & Extension Project (graded, 70%)
+### 3. Replication & Extension Project (graded, 70%)
 
 The (group) project is the core component of the seminar. Students work in small groups to **replicate and extend** an idea of their own.
 
