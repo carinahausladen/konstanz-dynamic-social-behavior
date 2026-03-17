@@ -1,5 +1,5 @@
 # Computational Methods for Modelling Dynamic Social Behavior
-**Summer Semester 2026 · University of Konstanz**
+**University of Konstanz 2026 · Summer Semester**
 Thursdays, 13:30–15:00
 
 
@@ -50,7 +50,7 @@ Thursdays, 13:30–15:00
 <tr>
 <td>—</td>
 <td style="white-space:nowrap;">14&nbsp;May</td>
-<td>Christy Himmelfart, no lecture</td>
+<td>no lecture</td>
 <td style="white-space: nowrap;"><code>████████░░</code>&nbsp;14&nbsp;h</td>
 </tr>
 <tr>
@@ -69,7 +69,7 @@ Thursdays, 13:30–15:00
 <tr>
 <td>🟨 8</td>
 <td style="white-space:nowrap;">11&nbsp;Jun</td>
-<td>Project Presentations (Introduction + Literature Section)</td>
+<td>Project Pitch (Introduction + Literature Section)</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
@@ -81,14 +81,14 @@ Thursdays, 13:30–15:00
 <tr>
 <td>🟨 10</td>
 <td style="white-space:nowrap;">25&nbsp;Jun</td>
-<td>Writing & Figures Clinic — Refining writing, title, and figure captions</td>
+<td>Writing & Figures Clinic</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
 <td rowspan="2">Marketing<br>Your Idea</td>
 <td>🟩 11</td>
 <td style="white-space:nowrap;">09&nbsp;Jul</td>
-<td>Feedback on Video Presentation &amp; Slides / Online Post / GitHub Repo</td>
+<td>Feedback on Presentation, Slides, Post, GitHub Repo</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
 </tr>
 <tr>
@@ -101,74 +101,58 @@ Thursdays, 13:30–15:00
 <td rowspan="2">Post-course</td>
 <td>⬜ 13</td>
 <td style="white-space:nowrap;">—</td>
-<td>Recommended break week — do not work on the project.</td>
+<td>Recommended break week</td>
 <td style="white-space: nowrap;"><code>░░░░░░░░░░</code>&nbsp;0&nbsp;h</td>
 </tr>
 <tr>
 <td>⬜ 14</td>
 <td style="white-space:nowrap;">—</td>
-<td>Final revision of the paper based on feedback and lessons from the course. Submit final version.</td>
+<td>Final revision of the paper & submit final version.</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
 </tr>
 </tbody>
 </table>
 
-<p>7 ECTS ~ 210 h | class time ~20 h | independent work target ~190 h</p>
+<p>7 ECTS ~ 210 h : class time ~20 h + independent work target ~190 h</p>
 
 
 ---
 
 
-## Activities & Assessment
+## Activities
 
 ### 1. Reading Notes (ungraded)
 
-Short (!) written notes to support careful reading and active participation. For each core paper, students should briefly (1 sentence each) address:
+For each reading, you should briefly (1 sentence each, via [![Overleaf](https://img.shields.io/badge/Overleaf-Project-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/6524355567nxbgzdwdmgkt#655081)):
 
-- **Core contribution:** What problem does the paper address and what does it contribute?
-- **Methods:** What are the key modeling or reinforcement-learning choices?
-- **Questions:** What is unclear, questionable, or worth discussing?
-- **Replication & extension:** Which part of the paper would you replicate or extend, and why?
-
-These notes are **not graded**, but they are required preparation for discussion and project work.
+- What is one specific idea or result you found interesting, and why?
+- What is one point that remains unclear? What specific question would you ask in class?
+- How could this paper be extended? For example, could its methods be applied in a different context? Can its data be analyzed in a different way?
 
 ---
 
 ### 2. Discussant Role (graded, 30%)
 
-Each student serves once (or twice, depending on class size) as a **discussant** for one core paper.
+- You will serve once (or twice, depending on class size) as a discussant for your chosen reading(s).
+- Your role is to help the class understand the paper in depth and to generate ideas for replication or extension.
+- You will give a short (10–15 min) presentation and lead a brief (5–8 min) discussion.
 
-**Responsibilities:**
-- Read the assigned paper in depth.
-- Identify strengths, limitations, and open questions relevant for replication/extension.
-- Prepare a small number of slides summarizing:
-  - the research question and method,
-  - key design decisions,
-  - concrete ideas for replication or extension.
-
-**Format:**
-- 12–15 minute presentation  
-- 5–8 minutes of guided discussion
 
 ---
 
-### 3. Replication & Extension Project (graded, 70%)
+### 3. Research Project (graded, 70%)
 
-The (group) project is the core component of the seminar. Students work in small groups to **replicate and extend** an idea of their own.
+Your goal is to develop an original research paper that builds on the course literature.
+You may work individually or in small groups.  
 
-**Project goals:**
-- Reproduce a core result, model, or experimental setup.
-- Implement a **theory-driven or design-driven extension**.
-- Produce clean, reproducible research artifacts.
+Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, submitting the following milestones is mandatory:
 
-**Expected output:**
-- A paper-style report (~8 pages / 4,000–8,000 words), including:
-  - research question and motivation,
-  - replication design,
-  - extension and results,
-  - limitations and interpretation.
-- A public GitHub repository with:
-  - well-documented code,
-  - instructions to reproduce results,
-  - clear version control.
-- A **Contributions section** specifying each group member’s role.
+- **Week 8:** Submit your project idea
+- **Week 9:** Present your research narrative and identify the literature gap  
+- **Week 10:** Present initial results, explain their relevance, and set up a GitHub repository  
+- **Week 11:** Submit a first full draft  
+- **Week 12:** Prepare slides, a practice presentation, and a social media-style summary (no need to publish)
+- **Week 13:** Final presentation
+
+All milestones must be submitted as GitHub Issues.
+Title format: Week X – [Your Name]
