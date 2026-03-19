@@ -69,7 +69,7 @@ Thursdays, 13:30–15:00
 <tr>
 <td>🟨 8</td>
 <td style="white-space:nowrap;">11&nbsp;Jun</td>
-<td>Project Pitch (Introduction + Literature Section)</td>
+<td>Project Pitch (Introduction + Literature Section | Guest Lecture)</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
