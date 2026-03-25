@@ -1,11 +1,14 @@
 # Lecture Notes: Human Behavior Simulation with LLMs
 
-- Early lecture notes (what was said in class context):
+- Lecture notes
   - Human behavior simulation with LLM agents: what is feasible today vs. still speculative.
   - Technical design choices: prompts, memory/state, tools, and reward signals.
   - Data and modeling assumptions: how training data shapes behavior.
   - Ethics in practice: privacy, consent, bias, manipulation, and transparency.
   - Evaluation and reproducibility: benchmarks, failure modes, and reporting standards.
+ 
+In 2023, Park et al. introduced a seminal paper in which a small society of LLM-based agents was simulated. A key innovation was the modeling of “brain-like” memory architectures—short-term memory, long-term memory, and reflection processes—implemented through LLMs. The resulting agents displayed coherent and temporally extended social behavior. Shortly thereafter, Altera AI extended this approach by simulating long-term societal evolution within the virtual environment Minecraft. These simulations included the emergence and transformation of shared structures such as religion, language, and cooperation patterns. More recently, Moltbook \cite{moltbook2026} demonstrated how entire social media ecosystems can be modeled using interacting LLM-based agents.
+At the same time, industry actors have entered this field at scale. Simile AI, for example, recently received $100 million in seed funding to develop a “foundation model capable of predicting human behavior across products and situations.” The magnitude of such investments illustrates the strategic importance increasingly attributed to behavioral simulation technologies.
 
 ## Readings
 
