@@ -126,6 +126,7 @@ Thursdays, 13:30–15:00
 Slides: https://slides.com/carinah/fairness-and-collective-decision-making-in-ai
 
 Overleaf: https://www.overleaf.com/6524355567nxbgzdwdmgkt#655081
+
 ---
 
 ## Activities
