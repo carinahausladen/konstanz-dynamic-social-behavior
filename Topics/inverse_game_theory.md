@@ -50,6 +50,8 @@ Applications include:
 - Virk, H., et al. (2025). *Blind Inverse Game Theory: Jointly Decoding Rewards and Rationality in Entropy-Regularized Competitive Games.* arXiv.  
   [arXiv:2511.05640](https://arxiv.org/abs/2511.05640) (~20 min estimated)
 
+- IRL for AI Ethics. https://dkasenberg.github.io/inverse-reinforcement-learning-rescue/
+
 Classic & foundational:
 - Camerer & Ho (1999) → [DOI](https://doi.org/10.1111/1468-0262.00054)
 - Peysakhovich & Lerer (2017) → [arXiv:1709.02865](https://arxiv.org/abs/1709.02865)

@@ -1,23 +1,26 @@
 # Game Theory
 
-Game theory gives us a formal way to model strategic interaction, which is useful for many social science applications, such as modeling negotiations in the UN. If you're interested in other real-life applications, have a look at this [blog](https://gametheory.life).
+Game theory gives us a formal way to model strategic interaction, which is useful for many social science applications, such as modeling negotiations in the UN. 
+If you're interested in other real-life applications, have a look at this [blog](https://gametheory.life).
 
-We will [play in class](https://economics-games.com/games) standard repeated games (such as the Prisoner’s Dilemma and Public Goods). And then we will get to know methods like dynamic time-warping and clustering to interpret human behavior in these games. 
+We will [play in class](https://economics-games.com/games) standard repeated games (such as the Prisoner’s Dilemma and Public Goods). 
 
-Then connect these insights to a new strand of literature that looks at how LLMs are playing these types of games.RL
+And then we will get to know methods like dynamic time-warping and clustering to interpret human behavior in these games. 
+
+Then connect these insights to a new strand of literature that looks at how LLMs are playing these types of games.
 
 
 ## Readings
 
-- [Identifying Latent Intentions via Inverse Reinforcement Learning in Repeated Linear Public Good Games (2026)](https://arxiv.org/abs/2601.08803) 🎧 ~1:05:00
 - [Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis (2024)](https://ojs.aaai.org) 🎧 ~0:45:00
 - [GTBench: Uncovering the Strategic Reasoning Capabilities of LLMs via Game-Theoretic Evaluations (2024)](https://neurips.cc) 🎧 ~0:55:00
 - [Game-theory behaviour of large language models: The case of Keynesian beauty contests (2025)](https://journals.ue.poznan.pl) 🎧 ~0:50:00
-- [Playing Repeated Games with Large Language Models (2025)](https://www.nature.com) 🎧 ~0:40:00
-- [Strategic Behavior of Large Language Models and the Role of Game Structure Versus Contextual Framing (2024)](https://www.nature.com) 🎧 ~0:45:00
-- [Game Theory Meets Large Language Models: A Systematic Survey (2025)](https://arxiv.org) 🎧 ~1:10:00
-- [ALYMPICS: LLM Agents Meet Game Theory (2025)](https://aclanthology.org) 🎧 ~0:55:00
+- [Playing Repeated Games with Large Language Models (2025)](https://www.nature.com/articles/s41562-025-02172-y) 🎧 ~0:40:00
+- [Strategic Behavior of Large Language Models and the Role of Game Structure Versus Contextual Framing (2024)](https://www.nature.com/articles/s41598-024-69032-z) 🎧 ~0:45:00
+- [Game Theory Meets Large Language Models: A Systematic Survey (2025)](https://arxiv.org/abs/2502.09053) 🎧 ~1:10:00
+- [ALYMPICS: LLM Agents Meet Game Theory (2025)](https://aclanthology.org/2025.coling-main.193/) 🎧 ~0:55:00
 
+### Methods Readings
 
 - [Clustering: Science or art? (2012)](https://proceedings.mlr.press/v27/luxburg12a/luxburg12a.pdf) 🎧 ~16:22
 - [What are the true clusters? (2015)](https://doi.org/10.1016/j.patrec.2015.04.009) 🎧 ~26:44

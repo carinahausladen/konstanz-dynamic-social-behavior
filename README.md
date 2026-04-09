@@ -48,64 +48,70 @@ Thursdays, 13:30–15:00
 <td style="white-space: nowrap;"><code>████░░░░░░</code>&nbsp;8&nbsp;h</td>
 </tr>
 <tr>
-<td>—</td>
+<td></td>
 <td style="white-space:nowrap;">14&nbsp;May</td>
 <td>no lecture</td>
 <td style="white-space: nowrap;"><code>████████░░</code>&nbsp;14&nbsp;h</td>
 </tr>
 <tr>
-<td>🟦 6</td>
+<td>🟦 7</td>
 <td style="white-space:nowrap;">21&nbsp;May</td>
 <td><a href="./Topics/inverse_game_theory.md">Inverse game theory</a></td>
 <td style="white-space: nowrap;"><code>████████░░</code>&nbsp;14&nbsp;h</td>
 </tr>
 <tr>
-<td rowspan="4">Scientific<br>Contribution</td>
-<td>🟨 7</td>
+<td rowspan="5">Scientific<br>Contribution</td>
+<td>🟨 8</td>
 <td style="white-space:nowrap;">28&nbsp;May</td>
-<td>1:1 Feedback on Project Idea</td>
+<td>Guest Lecture: Dino Carpentras</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
-<td>🟨 8</td>
-<td style="white-space:nowrap;">11&nbsp;Jun</td>
-<td>Project Pitch (Introduction + Literature Section)| Guest Lecture</td>
+<td></td>
+<td style="white-space:nowrap;">04&nbsp;Jun</td>
+<td>no lecture</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
 <td>🟨 9</td>
-<td style="white-space:nowrap;">18&nbsp;Jun</td>
-<td>Results Clinic — What have you found out? Tell a story</td>
+<td style="white-space:nowrap;">11&nbsp;Jun</td>
+<td>Guest Lecture: Damian Dailisan & Javier Argota Sánchez-Vaquerizo</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
 <td>🟨 10</td>
+<td style="white-space:nowrap;">18&nbsp;Jun</td>
+<td>Present Preliminary Results</td>
+<td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
+</tr>
+<tr>
+<td>🟨 11</td>
 <td style="white-space:nowrap;">25&nbsp;Jun</td>
 <td>Writing & Figures Clinic</td>
 <td style="white-space: nowrap;"><code>██████████</code>&nbsp;18&nbsp;h</td>
 </tr>
 <tr>
 <td rowspan="2">Marketing<br>Your Idea</td>
-<td>🟩 11</td>
+<td>🟩 12</td>
 <td style="white-space:nowrap;">09&nbsp;Jul</td>
 <td>Feedback on Presentation, Slides, Post, GitHub Repo</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
 </tr>
 <tr>
-<td>🟩 12</td>
+<td>🟩 13</td>
 <td style="white-space:nowrap;">16&nbsp;Jul</td>
 <td>Final Presentation</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
 </tr>
 <tr>
 <td rowspan="2">Post-course</td>
-<td>⬜ 13</td>
+<td>⬜ 14</td>
 <td style="white-space:nowrap;">—</td>
 <td>Recommended break week</td>
 <td style="white-space: nowrap;"><code>░░░░░░░░░░</code>&nbsp;0&nbsp;h</td>
 </tr>
 <tr>
-<td>⬜ 14</td>
+<td>⬜ 15</td>
 <td style="white-space:nowrap;">—</td>
 <td>Final revision of the paper & submit final version.</td>
 <td style="white-space: nowrap;"><code>███████░░░░</code>&nbsp;12&nbsp;h</td>
@@ -117,7 +123,10 @@ Thursdays, 13:30–15:00
 
 
 ---
+Slides: https://slides.com/carinah/fairness-and-collective-decision-making-in-ai
 
+Overleaf: https://www.overleaf.com/6524355567nxbgzdwdmgkt#655081
+---
 
 ## Activities
 
