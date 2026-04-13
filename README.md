@@ -9,7 +9,7 @@ Thursdays, 13:30–15:00
 | Phase                       | Week  | Date   | Topic/Activity                                     | Workload          |
 | --------------------------- | ----- | ------ | -------------------------------------------------- | ----------------- |
 | Generating Ideas            | 🟦 1  | 09 Apr | Introduction                                       | `░░░░░░░░░░` 0 h  |
-|                             | 🟦 2  | 16 Apr | [Game Theory](./Topics/game_theory.md)             | `████░░░░░░` 8 h  |
+|                             | 🟦 2  | 16 Apr | [Game Theory | Guest: Azza Bouleimen](./Topics/game_theory.md)             | `████░░░░░░` 8 h  |
 |                             | 🟦 3  | 23 Apr | [Game Theory](./Topics/game_theory.md)             | `████░░░░░░` 8 h  |
 |                             | 🟦 4  | 30 Apr | [World Simulations](./Topics/llm-simulation.md)    | `████░░░░░░` 8 h  |
 |                             | 🟦 5  | 07 May | [World Simulations](./Topics/llm-simulation.md)    | `████░░░░░░` 8 h  |
