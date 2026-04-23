@@ -88,7 +88,7 @@ Each reading below is presented by an assigned student discussant and counts tow
 1. [Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis (Fan et al., 2024)](https://arxiv.org/abs/2312.05488)
 2. [A Foundation Model to Predict and Capture Human Cognition (Binz et al., 2025)](https://www.nature.com/articles/s41586-025-09215-4)
 3. [Will Systems of LLM Agents Cooperate: An Investigation into a Social Dilemma (Willis et al., 2025)](https://arxiv.org/pdf/2501.16173)
-4. [The MindGames Challenge: Theory-of-Mind and Game Intelligence in LLM Agents (NeurIPS, 2025)](https://neurips.cc/virtual/2025/loc/san-diego/133441) *(first two talks only)*
+4. [The MindGames Challenge: Theory-of-Mind and Game Intelligence in LLM Agents (NeurIPS, 2025)](https://neurips.cc/virtual/2025/loc/san-diego/competition/127731) *(first two talks only)*
 5. [Simulating Subjects: The Promise and Peril of Artificial Intelligence Stand-Ins for Social Agents and Interactions (Kozlowski & Evans, 2025)](https://journals.sagepub.com/doi/abs/10.1177/00491241251337316) — *Jingyao Shi*
 
 ---
