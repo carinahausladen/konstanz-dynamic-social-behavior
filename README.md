@@ -78,7 +78,50 @@ Each reading below is presented by an assigned student discussant and counts tow
 
 ### Block I — Game Theory & LLMs
 
+**Week 2 (16 Apr) — Can LLMs reason strategically?**
+1. [Large Language Models as Simulated Economic Agents: What Can We Learn from Homo Silicus? (Horton, 2023)](https://www.nber.org/system/files/working_papers/w31122/w31122.pdf)
+2. [Strategic Behavior of LLMs and the Role of Game Structure Versus Contextual Framing (Lorè & Heydari, 2024)](https://www.nature.com/articles/s41598-024-69032-z)
+3. [Playing Repeated Games with Large Language Models (Akata et al., 2025)](https://www.nature.com/articles/s41562-025-02172-y)
+4. [Game Theory Meets Large Language Models: A Systematic Survey (Sun et al., 2025)](https://arxiv.org/abs/2502.09053)
+
 **Week 3 (23 Apr) — Multi-agent dynamics and theory of mind**
-1. [A Foundation Model to Predict and Capture Human Cognition (Binz et al., 2025)](https://www.nature.com/articles/s41586-025-09215-4) — *Lori Kizilhan*
-2. [Simulating Subjects: The Promise and Peril of Artificial Intelligence Stand-Ins for Social Agents and Interactions (Kozlowski & Evans, 2025)](https://journals.sagepub.com/doi/abs/10.1177/00491241251337316) — *Jingyao Shi*
+1. [Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis (Fan et al., 2024)](https://arxiv.org/abs/2312.05488)
+2. [A Foundation Model to Predict and Capture Human Cognition (Binz et al., 2025)](https://www.nature.com/articles/s41586-025-09215-4)
+3. [Will Systems of LLM Agents Cooperate: An Investigation into a Social Dilemma (Willis et al., 2025)](https://arxiv.org/pdf/2501.16173)
+4. [The MindGames Challenge: Theory-of-Mind and Game Intelligence in LLM Agents (NeurIPS, 2025)](https://neurips.cc/virtual/2025/loc/san-diego/133441) *(first two talks only)*
+5. [Simulating Subjects: The Promise and Peril of Artificial Intelligence Stand-Ins for Social Agents and Interactions (Kozlowski & Evans, 2025)](https://journals.sagepub.com/doi/abs/10.1177/00491241251337316) — *Jingyao Shi*
+
+---
+
+### Block II — World Simulations
+
+**Week 4 (30 Apr) — Can LLMs stand in for humans?**
+1. [Social Simulacra: Creating Populated Prototypes for Social Computing Systems (Park et al., 2022)](https://arxiv.org/abs/2208.04024)
+2. [Generative Agents: Interactive Simulacra of Human Behavior (Park et al., UIST 2023)](https://arxiv.org/abs/2304.03442) — *Bhuvanesh Wadhwani*
+3. [Generative Agent Simulations of 1,000 People (Park et al., 2024)](https://arxiv.org/abs/2411.10109) — *Emrecan Ulu*
+4. [Predicting Results of Social Science Experiments Using Large Language Models (Hewitt et al., 2024)](https://arxiv.org/abs/2407.11192) — *Dmitrii Semichev*
+5. [LLM Social Simulations Are a Promising Research Method (Anthis et al., 2025)](https://arxiv.org/pdf/2504.02234) — *Anastasiia Khitrova*
+6. [In Silico Sociology: Forecasting COVID-19 Polarization with Large Language Models (2024)](https://arxiv.org/abs/2407.11190)
+
+**Week 5 (07 May) — Emergent behavior and social intervention**
+1. [Project Sid: Many-agent Simulations toward AI Civilization (Altera Team, 2024)](https://arxiv.org/abs/2411.00114) — *Felix Bergstein*
+2. [Emergent Social Conventions and Collective Bias in LLM Populations (Ashery et al., 2025)](https://www.science.org/doi/full/10.1126/sciadv.adu9368) — *Aaron Siebert*
+3. [Can We Fix Social Media? Testing Prosocial Interventions using Generative Social Simulation (Larooij & Törnberg, 2025)](https://arxiv.org/pdf/2508.03385) — *Elena Solar*
+4. [Towards Principled Decision-Making and Interactive LLM Agents (NeurIPS, 2025)](https://neurips.cc/virtual/2025/loc/san-diego/133437) *(video + slides)*
+
+---
+
+### Block III — RL & IRL
+
+**Week 6 (21 May) — Learning to cooperate**
+1. [Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game (Xu et al., 2023)](https://arxiv.org/abs/2310.18940) — *Hamed Laroui*
+2. [Reinforcement Learning in a Prisoner's Dilemma (2024)](https://doi.org/10.1016/j.geb.2024.01.004)
+3. [Scaffolding Cooperation in Human Groups with Deep Reinforcement Learning (2023)](https://www.nature.com/articles/s41562-023-01686-7)
+4. [Human-level Play in the Game of Diplomacy by Combining Language Models with Strategic Reasoning (Meta FAIR, 2022)](https://www.science.org/doi/10.1126/science.ade9097) — *Artur Zavistovskyi*
+
+**Week 7 (28 May) — Designing for prosocial outcomes**
+1. [Deep Mechanism Design: Learning Social and Economic Policies for Human Benefit (Koster, Tacchetti et al., 2024)](https://www.pnas.org/doi/10.1073/pnas.2319949121) — *Isabelle Rittner*
+2. [Deep Reinforcement Learning Can Promote Sustainable Human Behaviour in a Common-Pool Resource Problem (Koster et al., 2025)](https://doi.org/10.1038/s41467-025-58043-7) — *Nils Neuner*
+3. [Collective Artificial Intelligence and Evolutionary Dynamics (2025)](https://www.pnas.org/doi/10.1073/pnas.2505860122)
+4. [How Social Learning Enhances or Undermines Efficiency in Collective Decision-Making Under Uncertainty (Suganuma, Katahira, Ohtsuki & Kameda, 2025)](https://www.pnas.org/doi/10.1073/pnas.2516827122) — *Teresa Schönmehl*
 
