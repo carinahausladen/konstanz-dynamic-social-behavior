@@ -5,3 +5,5 @@ seaborn
 scikit-learn
 tslearn
 jupyter
+groq
+tqdm

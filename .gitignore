@@ -2,3 +2,20 @@ papers/
 .DS_Store
 participants.md
 participatns.md
+
+# IDE and virtualenv
+.idea/
+.venv/
+__pycache__/
+
+# Organizational / student-identifying material (keep local)
+orga/
+
+# Old drafts moved out of Topics/
+trash/
+
+# Defensive: never commit API keys
+JN/*API_KEY*
+JN/*.env
+JN/ANTHROPIC_API_KEY.txt
+JN/OPENAI_API_KEY.txt

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 3 — The LLM / Game-Theory Literature, in Five Moves</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --bg2: #f5f5f3; --bg3: #ededea;
+  --text: #1a1a18; --text2: #5a5a56; --text3: #9a9a94;
+  --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
+  --accent: #378ADD; --radius: 10px; --radius-sm: 7px;
+  --green: #0F6E56; --red: #993C1D;
+  --pill-blue-bg: #E6F1FB; --pill-blue-text: #0C447C;
+  --pill-teal-bg: #E1F5EE; --pill-teal-text: #085041;
+  --pill-coral-bg: #FAECE7; --pill-coral-text: #712B13;
+  --pill-purple-bg: #EEEDFE; --pill-purple-text: #3C3489;
+  --pill-amber-bg: #FAEEDA; --pill-amber-text: #633806;
+  --tln-bg: #E6F1FB; --tln-text: #185FA5;
+  --card-bg: #f5f5f3; --pip-off: #d0d0cc; --pip-on: #378ADD;
+  --disc-bg: #EEEDFE; --disc-border: #7F77DD; --disc-text: #3C3489;
+  --warn-bg: #FAEEDA; --warn-border: #BA7517; --warn-text: #633806;
+  --succ-bg: #E1F5EE; --succ-border: #1D9E75; --succ-text: #085041;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e1c; --bg2: #282826; --bg3: #323230;
+    --text: #e8e8e2; --text2: #a8a8a2; --text3: #686862;
+    --border: rgba(255,255,255,0.10); --border2: rgba(255,255,255,0.20);
+    --green: #5DCAA5; --red: #F0997B;
+    --pill-blue-bg: #0C447C; --pill-blue-text: #B5D4F4;
+    --pill-teal-bg: #085041; --pill-teal-text: #9FE1CB;
+    --pill-coral-bg: #712B13; --pill-coral-text: #F5C4B3;
+    --pill-purple-bg: #3C3489; --pill-purple-text: #CECBF6;
+    --pill-amber-bg: #633806; --pill-amber-text: #FAC775;
+    --tln-bg: #0C447C; --tln-text: #B5D4F4;
+    --card-bg: #282826; --pip-off: #484844;
+    --disc-bg: #2a2840; --disc-border: #7F77DD; --disc-text: #CECBF6;
+    --warn-bg: #2e2510; --warn-border: #BA7517; --warn-text: #FAC775;
+    --succ-bg: #0a2018; --succ-border: #1D9E75; --succ-text: #9FE1CB;
+  }
+}
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg3); min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; color: var(--text); }
+.wrapper { width: 100%; max-width: 900px; }
+.slide { display: none; min-height: 540px; padding: 2.2rem 2.8rem; flex-direction: column; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+.slide.active { display: flex; }
+.slide-section { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .4rem; }
+.slide-title { font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 1.1rem; line-height: 1.3; }
+.slide-body { font-size: 14px; color: var(--text2); line-height: 1.75; flex: 1; }
+.slide-body p { margin-bottom: .7rem; }
+.slide-body strong { font-weight: 600; color: var(--text); }
+.slide-body em { color: var(--text); font-style: italic; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: .7rem 0; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .8rem; margin: .7rem 0; }
+.four-col { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: .7rem; margin: .7rem 0; }
+.five-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; margin: .7rem 0; }
+.card { background: var(--card-bg); border-radius: var(--radius-sm); padding: .85rem 1rem; border: 0.5px solid var(--border); }
+.card h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: .35rem; }
+.card p { font-size: 13px; color: var(--text2); line-height: 1.55; margin-bottom: .4rem; }
+.card p:last-child { margin-bottom: 0; }
+.card.accent { border-color: var(--accent); border-width: 1.5px; }
+.card.amber  { border-color: var(--warn-border);  border-width: 1.5px; }
+.card.coral  { border-color: var(--red);          border-width: 1.5px; }
+.card.teal   { border-color: var(--succ-border);  border-width: 1.5px; }
+.card.purple { border-color: var(--disc-border);  border-width: 1.5px; }
+
+.hbox { background: var(--bg2); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: .65rem .9rem; margin: .75rem 0; font-size: 13px; color: var(--text); line-height: 1.6; }
+.disc { background: var(--disc-bg); border-left: 3px solid var(--disc-border); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: .65rem .9rem; margin: .75rem 0; font-size: 13px; color: var(--disc-text); line-height: 1.6; }
+.disc strong { color: var(--disc-text); font-weight: 600; }
+.warn { background: var(--warn-bg); border-left: 3px solid var(--warn-border); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: .65rem .9rem; margin: .75rem 0; font-size: 13px; color: var(--warn-text); line-height: 1.6; }
+.warn strong { color: var(--warn-text); font-weight: 600; }
+.succ { background: var(--succ-bg); border-left: 3px solid var(--succ-border); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: .65rem .9rem; margin: .75rem 0; font-size: 13px; color: var(--succ-text); line-height: 1.6; }
+
+.tl { margin: .6rem 0; }
+.tli { display: flex; gap: 12px; margin-bottom: .85rem; align-items: flex-start; }
+.tln { width: 26px; height: 26px; border-radius: 50%; background: var(--tln-bg); color: var(--tln-text); font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.tlt { font-size: 14px; color: var(--text2); line-height: 1.6; }
+.tlt strong { color: var(--text); font-weight: 600; }
+
+.pill { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 20px; margin: 2px; font-weight: 500; }
+.pb { background: var(--pill-blue-bg); color: var(--pill-blue-text); }
+.pt { background: var(--pill-teal-bg); color: var(--pill-teal-text); }
+.pc { background: var(--pill-coral-bg); color: var(--pill-coral-text); }
+.pp { background: var(--pill-purple-bg); color: var(--pill-purple-text); }
+.pa { background: var(--pill-amber-bg); color: var(--pill-amber-text); }
+
+.section-divider { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin: 1rem 0 .5rem; border-top: 0.5px solid var(--border); padding-top: .75rem; }
+
+.quote { border-left: 3px solid var(--border2); padding: .5rem 1rem; margin: .75rem 0; font-size: 14px; color: var(--text2); font-style: italic; line-height: 1.6; }
+.quote cite { display: block; font-style: normal; font-size: 12px; color: var(--text3); margin-top: .3rem; }
+
+.matrix { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: .6rem .8rem; white-space: pre; line-height: 1.5; overflow-x: auto; color: var(--text); margin: .5rem 0; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; margin-top: 1.2rem; gap: 1rem; }
+.nbtn { font-size: 13px; padding: 7px 18px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); background: transparent; color: var(--text); cursor: pointer; font-family: inherit; transition: background .12s; white-space: nowrap; }
+.nbtn:hover { background: var(--bg2); }
+.nbtn:disabled { opacity: .3; cursor: default; }
+.pips { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: center; flex: 1; }
+.pip { width: 13px; height: 4px; border-radius: 2px; background: var(--pip-off); cursor: pointer; }
+.pip.on { background: var(--pip-on); }
+.slide-counter { font-size: 12px; color: var(--text3); white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .slide { padding: 1.4rem 1.2rem; }
+  .two-col, .three-col, .four-col, .five-col { grid-template-columns: 1fr; }
+  .slide-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- 0: Title -->
+<div class="slide active" id="sl0">
+  <div class="slide-section">Week 3 &middot; Lecture</div>
+  <div class="slide-title">The LLM / Game-Theory Literature, in Five Moves</div>
+  <div class="slide-body">
+    <p>Seventy years of behavioral game theory, built to study humans.</p>
+    <p>Now pointed at a new kind of subject.</p>
+    <div class="quote">When an LLM plays a game, is it <em>reasoning about the payoffs</em>, or <em>pattern-matching on the wrapper around them</em>? And what would tell us the difference?</div>
+  </div>
+</div>
+
+<!-- 1: Session plan + roadmap -->
+<div class="slide" id="sl1">
+  <div class="slide-section">How today runs</div>
+  <div class="slide-title">Session plan &amp; roadmap</div>
+  <div class="slide-body">
+    <div class="tl">
+      <div class="tli"><div class="tln">1</div><div class="tlt"><strong>15 min &middot; Last week's notebook.</strong> DTW &amp; clustering on human PGG data &mdash; the methodological template.</div></div>
+      <div class="tli"><div class="tln">2</div><div class="tlt"><strong>~35 min &middot; Lecture.</strong> The nine papers across two weeks, organised by what they do.</div></div>
+      <div class="tli"><div class="tln">3</div><div class="tlt"><strong>20 min &middot; New notebook.</strong> Structure-vs-framing on a free Groq API &mdash; diagnose reasoning vs. pattern-matching yourself.</div></div>
+      <div class="tli"><div class="tln">4</div><div class="tlt"><strong>15 min &middot; Jingyao.</strong> Kozlowski &amp; Evans: the social-science validity apparatus meets LLM simulation.</div></div>
+    </div>
+    <div class="hbox"><strong>Lecture structure.</strong> Part I: nine papers, five moves. Part II: the step not yet taken.</div>
+  </div>
+</div>
+
+<!-- 2: Reading guide — 9 papers in 5 categories -->
+<div class="slide" id="sl2">
+  <div class="slide-section">Reading guide</div>
+  <div class="slide-title">Nine papers, five methodological moves</div>
+  <div class="slide-body">
+    <div class="five-col">
+      <div class="card accent">
+        <h4><span class="pill pb">&#128998;</span> Programmatic</h4>
+        <p><strong>Horton</strong> 2023 &mdash; Homo Silicus.</p>
+      </div>
+      <div class="card teal">
+        <h4><span class="pill pt">&#129001;</span> Field maps</h4>
+        <p><strong>Sun</strong> 2025 &mdash; taxonomy.</p>
+        <p><strong>Kozlowski &amp; Evans</strong> 2025 &mdash; validity.</p>
+      </div>
+      <div class="card amber">
+        <h4><span class="pill pa">&#129000;</span> Static eval</h4>
+        <p><strong>Lor&egrave; &amp; Heydari</strong> 2024.</p>
+        <p><strong>Fan et al.</strong> 2024.</p>
+        <p><strong>MindGames</strong> 2025.</p>
+      </div>
+      <div class="card coral">
+        <h4><span class="pill pc">&#128997;</span> Dynamic eval</h4>
+        <p><strong>Akata et al.</strong> 2025.</p>
+        <p><strong>Willis et al.</strong> 2025.</p>
+      </div>
+      <div class="card purple">
+        <h4><span class="pill pp">&#129002;</span> Fine-tune</h4>
+        <p><strong>Binz et al.</strong> Centaur, 2025.</p>
+      </div>
+    </div>
+    <div class="hbox">Same colour &rarr; same methodological move. You'll see each category framed before any one paper inside it.</div>
+  </div>
+</div>
+
+<!-- 3: Three opening questions -->
+<div class="slide" id="sl3">
+  <div class="slide-section">Opening threads</div>
+  <div class="slide-title">Three questions to bring with you</div>
+  <div class="slide-body">
+    <div class="tl">
+      <div class="tli"><div class="tln">1</div><div class="tlt"><strong>Is this reasoning, or is it pattern-matching?</strong> When the model cooperates or defects, is it <em>reasoning about the game</em> or reproducing patterns from training text that describes such games?</div></div>
+      <div class="tli"><div class="tln">2</div><div class="tlt"><strong>Does any of it generalise beyond toy games?</strong> Every empirical paper here uses stylised, short-horizon, binary, stakes-free interactions. The lab-to-field gap that has haunted behavioural econ applies here too.</div></div>
+      <div class="tli"><div class="tln">3</div><div class="tlt"><strong>What is the field not asking?</strong> The canonical experiments have been run. A new model on a new 2&times;2 is incremental. Where is the genuine frontier?</div></div>
+    </div>
+    <div class="disc">Hold the first two for the papers. The third is what Part II is about.</div>
+  </div>
+</div>
+
+<!-- 4: Horton — the programmatic move -->
+<div class="slide" id="sl4">
+  <div class="slide-section"><span class="pill pb">&#128998; Horton</span> &middot; The programmatic move</div>
+  <div class="slide-title">LLMs as theory tool, not substitute</div>
+  <div class="slide-body">
+    <p>Prompt with a persona. Ask a scenario question. Watch responses shift in systematic ways when the persona shifts.</p>
+    <div class="three-col">
+      <div class="card">
+        <h4>Socialist vs. libertarian</h4>
+        <p>Same fairness scenario &rarr; different answers.</p>
+      </div>
+      <div class="card">
+        <h4>Equity vs. efficiency</h4>
+        <p>Same dictator game &rarr; different allocations.</p>
+      </div>
+      <div class="card">
+        <h4>Min-wage variation</h4>
+        <p>Same labour-market persona &rarr; hiring shifts.</p>
+      </div>
+    </div>
+    <div class="hbox"><em>Homo silicus</em>, in parallel to <em>Homo economicus</em>. <strong>Stipulated</strong>, not empirical. A modelling convention.</div>
+    <div class="disc">Modest claim: LLMs as <strong>cheap hypothesis pre-test</strong>, not equivalence to human subjects.</div>
+  </div>
+</div>
+
+<!-- 5: Horton — design choices to carry -->
+<div class="slide" id="sl5">
+  <div class="slide-section"><span class="pill pb">&#128998; Horton</span> &middot; What to carry forward</div>
+  <div class="slide-title">Three design choices that will echo</div>
+  <div class="slide-body">
+    <div class="three-col">
+      <div class="card">
+        <h4>1. Agent by prompt</h4>
+        <p>Heterogeneity is <em>stipulated</em> by the experimenter, not recovered from data.</p>
+      </div>
+      <div class="card">
+        <h4>2. Directional criterion</h4>
+        <p>Pools across runs. Asks only whether the aggregate moves the way humans did.</p>
+      </div>
+      <div class="card">
+        <h4>3. Singular silicon</h4>
+        <p>One agent per persona, characterised by central tendency. One GPT-4 or many? Not asked.</p>
+      </div>
+    </div>
+    <div class="succ">Five paradigms re-run: fairness (Kahneman), dictator (Charness&ndash;Rabin), status quo (Samuelson&ndash;Zeckhauser), prospect (Oprea), hiring.</div>
+    <div class="disc">Old question reopened with a new instrument: what kind of object is <em>Homo economicus</em>?</div>
+  </div>
+</div>
+
+<!-- 6: Sun — taxonomy -->
+<div class="slide" id="sl6">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun et al.</span> &middot; Four-branch taxonomy</div>
+  <div class="slide-title">The map of the field</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card accent">
+        <h4>&sect;2 &mdash; LLMs in game playgrounds</h4>
+        <p>Run LLMs through games, measure play. <strong>Where almost all our W2+W3 papers live.</strong></p>
+      </div>
+      <div class="card">
+        <h4>&sect;3 &mdash; GT methods to improve LLMs</h4>
+        <p>Shapley, social choice, max-min. GT as <em>tool for the model</em>.</p>
+      </div>
+      <div class="card">
+        <h4>&sect;4 &mdash; Games <em>about</em> LLMs</h4>
+        <p>Developer competition, deployer incentives, societal externalities.</p>
+      </div>
+      <div class="card">
+        <h4>&sect;5 &mdash; LLMs to advance GT</h4>
+        <p>Intractable games, natural-language moves. LLM as <em>method</em>, not subject.</p>
+      </div>
+    </div>
+    <div class="hbox"><span class="pill pb">Horton</span> <span class="pill pa">Lor&egrave;</span> <span class="pill pa">Fan</span> <span class="pill pa">MindGames</span> <span class="pill pc">Akata</span> <span class="pill pc">Willis</span> &rarr; all &sect;2. <span class="pill pt">Kozlowski &amp; Evans</span> &rarr; straddles &sect;2/&sect;3.4. <span class="pill pp">Centaur</span> &rarr; outside the taxonomy entirely.</div>
+  </div>
+</div>
+
+<!-- 7: Sun — the missing category -->
+<div class="slide" id="sl7">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun et al.</span> &middot; What's missing</div>
+  <div class="slide-title">&sect;3.3 "heterogeneity" does not mean what you think</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card">
+        <h4>What &sect;3.3 <em>is</em></h4>
+        <p>Aligning LLMs to <strong>heterogeneous users</strong>.</p>
+        <p>Heterogeneity in the <em>audience</em>.</p>
+      </div>
+      <div class="card">
+        <h4>What it is <em>not</em></h4>
+        <p>The model's <em>own</em> behavioural variability.</p>
+        <p>One GPT-4 or many? Not in the taxonomy.</p>
+      </div>
+    </div>
+    <div class="warn"><strong>No within-model types.</strong> No mixture models. No latent-class analysis. No DTW clustering. No IRL on trajectories. Thirty years of behavioural-GT machinery &mdash; <strong>absent from the map</strong>.</div>
+    <div class="disc">Patterned heterogeneity of LLM behaviour is a category the taxonomy does not contain. Part II returns to this.</div>
+  </div>
+</div>
+
+<!-- 8: Sun §2 — benefit 1 of 4: deployment-hazard surveillance -->
+<div class="slide" id="sl8">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun &sect;2</span> &middot; "Benefit humanity" &middot; 1 of 4</div>
+  <div class="slide-title">Knowing where LLMs break strategically &mdash; before deployment</div>
+  <div class="slide-body">
+    <p>&sect;2 runs LLMs through games and catalogues the failures. The payoff is a shortlist of <strong>documented deployment hazards</strong>, backed by experimental evidence &mdash; so policy and deployment conversations can reference evidence rather than intuition.</p>
+    <div class="three-col">
+      <div class="card">
+        <h4>Antitrust</h4>
+        <p>LLMs display <em>tacit collusion in pricing</em> in Bertrand-competition games (Sun Table 1).</p>
+        <p class="small">Consequence: any platform deploying LLMs as pricing agents.</p>
+      </div>
+      <div class="card">
+        <h4>Negotiation</h4>
+        <p>Models "regress to selfish or inconsistent strategies in complex scenarios without social scaffolding."</p>
+        <p class="small">Consequence: LLMs representing coalitions or interests.</p>
+      </div>
+      <div class="card">
+        <h4>Role reliability</h4>
+        <p>Loss of role consistency and logical coherence under pressure (Avalon, Werewolf).</p>
+        <p class="small">Consequence: citizen service, legal aid, medical triage.</p>
+      </div>
+    </div>
+    <div class="succ">Evidence-backed hazard list &mdash; where <em>not</em> to trust LLMs, empirically, not by intuition.</div>
+  </div>
+</div>
+
+<!-- 9: Sun §3 — benefit 2 of 4: accountability + fairness of the model -->
+<div class="slide" id="sl9">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun &sect;3</span> &middot; "Benefit humanity" &middot; 2 of 4</div>
+  <div class="slide-title">Accountability, fairness, stability inside the model</div>
+  <div class="slide-body">
+    <p>&sect;3 uses game-theoretic tools to patch four documented failure modes of LLM pipelines. The downstream consequences are directly political.</p>
+    <div class="two-col">
+      <div class="card">
+        <h4>Audit-readiness</h4>
+        <p>Shapley values decompose decisions into the contributions of inputs, layers, attention heads. Makes models <strong>auditable</strong>.</p>
+        <p class="small">Pre-condition for GDPR's "right to explanation" and the EU AI Act.</p>
+      </div>
+      <div class="card">
+        <h4>Honest alignment</h4>
+        <p>Min-max recasting of RLHF drops the Bradley&ndash;Terry assumption that preferences are transitive and scalar &mdash; real preferences, including voting preferences, are neither.</p>
+        <p class="small">Alignment that does not misrepresent the people it serves.</p>
+      </div>
+      <div class="card">
+        <h4>Fair representation</h4>
+        <p>Sun reports canonical RLHF is mathematically equivalent to <strong>Borda count</strong> &mdash; a voting rule with tyranny-of-the-majority properties. Social-choice axioms and mechanism design fix this.</p>
+        <p class="small">Models that do not silently under-serve minority subgroups.</p>
+      </div>
+      <div class="card">
+        <h4>Stable over time</h4>
+        <p>Self-play and Stackelberg training prevent reward-hacking as the model improves past its static reward signal.</p>
+        <p class="small">Less drift, less brittleness.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10: Sun §4 — benefit 3 of 4: predict market/regulatory equilibria -->
+<div class="slide" id="sl10">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun &sect;4</span> &middot; "Benefit humanity" &middot; 3 of 4</div>
+  <div class="slide-title">Predicting the AI rollout market before bad equilibria lock in</div>
+  <div class="slide-body">
+    <p>&sect;4 treats LLMs as <em>institutional players</em> and models the strategic equilibria their deployment produces &mdash; leverage for regulators and platform designers.</p>
+    <div class="three-col">
+      <div class="card">
+        <h4>Braess's Paradox for GenAI</h4>
+        <p>Taitler et al.: a platform optimising for revenue drains the human knowledge forum it depends on (Stack Overflow-style). Everyone ends up worse off.</p>
+        <p class="small">Named system-level failure a regulator can aim policy at.</p>
+      </div>
+      <div class="card">
+        <h4>Regulatory arbitrage</h4>
+        <p>Laufer et al.: safety standards only on <em>downstream</em> fine-tuners incentivise <em>upstream</em> developers to underinvest in safety.</p>
+        <p class="small">Textbook econ-of-regulation pathology, applied to AI.</p>
+      </div>
+      <div class="card">
+        <h4>Data-corruption incentives</h4>
+        <p>Buening et al. derive payment rules that stop RLHF annotators from strategically misreporting preferences.</p>
+        <p class="small">Stops training data being corrupted by annotators' own incentives.</p>
+      </div>
+    </div>
+    <div class="succ">This is the branch where "governance of AI" becomes a concrete research object.</div>
+  </div>
+</div>
+
+<!-- 11: Sun §5 — benefit 4 of 4: mechanism design into language domains -->
+<div class="slide" id="sl11">
+  <div class="slide-section"><span class="pill pt">&#129001; Sun &sect;5</span> &middot; "Benefit humanity" &middot; 4 of 4</div>
+  <div class="slide-title">Mechanism design for language-based governance</div>
+  <div class="slide-body">
+    <p>Classical mechanism design requires problems expressible in numbers &mdash; which excludes most coordination problems social scientists care about. LLMs remove that restriction.</p>
+    <div class="two-col">
+      <div class="card">
+        <h4>Generative social choice</h4>
+        <p>Fish et al., Boehmer et al.: extract preferences from free-text deliberation, produce representative policy slates.</p>
+        <p class="small">Application: Polis-style citizens' assemblies.</p>
+      </div>
+      <div class="card">
+        <h4>Semantic-enhanced auctions</h4>
+        <p>Sun et al.: run Vickrey and combinatorial auctions on natural-language valuations.</p>
+        <p class="small">Application: public procurement with qualitative criteria.</p>
+      </div>
+      <div class="card">
+        <h4>Verbalised Bayesian persuasion</h4>
+        <p>Li et al.: models dialogue in real diplomatic and multi-stakeholder negotiation.</p>
+        <p class="small">Application: mediation, treaty bargaining.</p>
+      </div>
+      <div class="card">
+        <h4>Mechanism-as-code</h4>
+        <p>Liu et al.: LLM writes the mechanism itself as human-readable pseudocode; rediscovers classical ones in competitive evaluation.</p>
+        <p class="small">Application: policy rule-writing with machine auditability.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12: Centaur — intro: the one paper trained, not prompted -->
+<div class="slide" id="sl12">
+  <div class="slide-section"><span class="pill pp">&#129002; Binz et al.</span> &middot; Centaur &mdash; the fifth move</div>
+  <div class="slide-title">Fine-tuning, not prompting &mdash; the paper whose title most directly matches this course</div>
+  <div class="slide-body">
+    <p>Every other paper on this reading list <em>prompts</em> an existing LLM. <strong>Centaur</strong> fine-tunes one &mdash; Llama 3.1 70B adapted to <strong>Psych-101</strong>, a corpus of 160 psychology experiments transcribed into natural language (60,092 participants, 10.7M choices). The training objective predicts the <em>subject's next choice</em>, not the next word of the stimulus.</p>
+    <div class="three-col">
+      <div class="card">
+        <h4>The methodological move</h4>
+        <p><em>Training</em>, not prompting. The distinction is the one you know from econometrics between using someone else's published model and <strong>re-estimating its parameters on your own data</strong>.</p>
+      </div>
+      <div class="card">
+        <h4>What it predicts</h4>
+        <p>Trial-level human choices on 32 held-out psychology experiments, beating both base Llama and the best domain-specific cognitive model. Generalises to modified cover stories, new problem structures, LSAT items.</p>
+      </div>
+      <div class="card">
+        <h4>Why it is &#129002;</h4>
+        <p>Sits outside Sun's four-branch taxonomy entirely &mdash; not evaluation, not alignment fix, not game-about-LLM, not LLM-for-GT. A fifth methodological move.</p>
+      </div>
+    </div>
+    <div class="succ">The paper on this reading list whose title most directly matches <em>Computational Methods for Modeling Dynamic Social Behavior</em>. &rarr; Part II picks it up again at sl26 as the one partial counterexample to the missed-mixture diagnosis.</div>
+  </div>
+</div>
+
+<!-- 13: Yellow category — intro -->
+<div class="slide" id="sl13">
+  <div class="slide-section"><span class="pill pa">&#129000; Static behavioural evaluation</span></div>
+  <div class="slide-title">What the yellow category does</div>
+  <div class="slide-body">
+    <p>The simplest move in the literature:</p>
+    <div class="hbox">Take a catalogue of games. Run an LLM through them many times. Report how often it plays each strategy.</div>
+    <p>No iteration. No opponent learning. No context beyond the prompt. <strong>Unit of analysis: the model. Datum: the proportion choosing each action. Comparison: across models, games, framings.</strong></p>
+    <div class="three-col">
+      <div class="card"><h4>Lor&egrave; &amp; Heydari</h4><p>Tight factorial.</p></div>
+      <div class="card"><h4>Fan et al.</h4><p>Broader battery.</p></div>
+      <div class="card"><h4>MindGames</h4><p>Packaged as a benchmark.</p></div>
+    </div>
+    <div class="disc">This is the aggregate-means playbook of early behavioural GT, applied to a new subject.</div>
+  </div>
+</div>
+
+<!-- 14: Lorè — design + three axes -->
+<div class="slide" id="sl14">
+  <div class="slide-section"><span class="pill pa">&#129000; Lor&egrave; &amp; Heydari</span> &middot; Design &amp; three axes</div>
+  <div class="slide-title">3 &times; 4 &times; 5 factorial &mdash; what payoffs and what cover story?</div>
+  <div class="slide-body">
+    <div class="three-col">
+      <div class="card"><h4>3 models</h4><p>GPT-3.5 &middot; GPT-4 &middot; Llama-2 70B</p></div>
+      <div class="card"><h4>4 games</h4><p>PD &middot; Stag Hunt &middot; Snowdrift &middot; Harmony</p></div>
+      <div class="card"><h4>5 contexts</h4><p>Summit &middot; business &middot; environmental &middot; friends &middot; teammates</p></div>
+    </div>
+    <div class="matrix">axis                     GPT-3.5         GPT-4                 Llama-2
+&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+response to payoffs      weak            strong                strong
+response to framing      strong          modulated             calibrated
+within-cell distribution weakly mixed    near-bimodal, pure    genuinely mixed</div>
+    <div class="disc">Reasoner signature: high structure, low framing. Pattern-matcher: the reverse. <strong>GPT-4 sits in between</strong>.</div>
+  </div>
+</div>
+
+<!-- 15: Lorè — the bimodality -->
+<div class="slide" id="sl15">
+  <div class="slide-section"><span class="pill pa">&#129000; Lor&egrave; &amp; Heydari</span> &middot; The key signal</div>
+  <div class="slide-title">The GPT-4 bimodality</div>
+  <div class="slide-body">
+    <div class="quote">300 identical prompts. Distribution bunches at the two extremes of the response scale.</div>
+    <div class="warn"><strong>In human data, bimodality across runs of the same manipulation is a textbook signature of a two-type population.</strong> It is what drove the 1990s decomposition of PGG contributors into conditional cooperators and free-riders.</div>
+    <p>Lor&egrave; and Heydari <strong>report</strong> the bimodality. They do not <strong>fit</strong> it as a mixture.</p>
+    <div class="disc">Hold this in mind. Part II returns to it.</div>
+  </div>
+</div>
+
+<!-- 16: Fan + MindGames — scaling the move -->
+<div class="slide" id="sl16">
+  <div class="slide-section"><span class="pill pa">&#129000; Fan et al. &middot; MindGames</span> &middot; Wider nets, same silence</div>
+  <div class="slide-title">Scaling the static-evaluation move</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card">
+        <h4>Fan et al. 2024</h4>
+        <p>Wider battery, explicit rationality criterion (dominance, backward induction, best-response).</p>
+        <p>Reports <em>rationality scores</em> per model per game.</p>
+        <p><strong>Same unit of analysis:</strong> hundreds of runs per cell, within-cell distribution not examined.</p>
+      </div>
+      <div class="card">
+        <h4>MindGames 2025</h4>
+        <p>Packages theory-of-mind + strategy items as a <em>benchmark</em>.</p>
+        <p>Operationalises Akata's BoS ToM failure across many models.</p>
+        <p><strong>Benchmark framing collapses</strong> within-model variability before it can be seen.</p>
+      </div>
+    </div>
+    <div class="hbox">A 0.78 rationality score could be one coherent reasoner getting it right 78% of the time &mdash; or a 78/22 mixture of two types. The aggregate cannot tell them apart.</div>
+  </div>
+</div>
+
+<!-- 17: Yellow category — what it adds up to -->
+<div class="slide" id="sl17">
+  <div class="slide-section"><span class="pill pa">&#129000; Static eval</span> &middot; Category summary</div>
+  <div class="slide-title">What the yellow category adds up to</div>
+  <div class="slide-body">
+    <p>Same methodological move. Differ chiefly in how wide the net is.</p>
+    <div class="three-col">
+      <div class="card"><h4>Lor&egrave;</h4><p>Factorial, accidentally surfaces bimodality.</p></div>
+      <div class="card"><h4>Fan</h4><p>Broader battery, rationality scores.</p></div>
+      <div class="card"><h4>MindGames</h4><p>Broadest net, one number per model per capability.</p></div>
+    </div>
+    <div class="succ"><strong>What the category reliably does.</strong> Reproduces: more capable models track structure more closely. Surfaces: framing sensitivity.</div>
+    <div class="warn"><strong>What the category reliably doesn't.</strong> Ask whether the model is one reasoner, a mixture of types, or a pattern-matcher conditioning on unmeasured prompt features. The within-cell distribution is not the output it reports.</div>
+  </div>
+</div>
+
+<!-- 18: Red category — intro -->
+<div class="slide" id="sl18">
+  <div class="slide-section"><span class="pill pc">&#128997; Dynamic / multi-agent evaluation</span></div>
+  <div class="slide-title">What the red category does</div>
+  <div class="slide-body">
+    <p>Put time back into the experiment. The unit becomes a <strong>trajectory</strong>, not a trial.</p>
+    <div class="hbox"><strong>What iteration makes visible</strong> &mdash; theory of mind (beliefs matter only across time), norms of retaliation and forgiveness (time-indexed), equilibrium selection (coordination on an alternating BoS equilibrium requires repeated play).</div>
+    <div class="two-col">
+      <div class="card"><h4>Akata et al.</h4><p>Iterate the <em>game</em>: same two players, many rounds.</p></div>
+      <div class="card"><h4>Willis et al.</h4><p>Iterate the <em>strategies</em>: population of LLM-authored strategies competes across generations.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 19: Akata — PD/BoS asymmetry -->
+<div class="slide" id="sl19">
+  <div class="slide-section"><span class="pill pc">&#128997; Akata et al.</span> &middot; The asymmetry</div>
+  <div class="slide-title">Self-interest games vs. coordination games</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card">
+        <h4>Prisoner's Dilemma family</h4>
+        <p>GPT-4 defects where theory says it should.</p>
+        <p>Retaliates on defection. <strong>Never forgives.</strong></p>
+        <p>Pure <strong>grim trigger</strong> &mdash; rational for self, worse for the collective.</p>
+      </div>
+      <div class="card">
+        <h4>Battle of the Sexes</h4>
+        <p>Picks its own preferred coordination point.</p>
+        <p><strong>Refuses to alternate</strong>, even with an alternating partner.</p>
+        <p>Not selfishness. A failure of <strong>theory of mind</strong>.</p>
+      </div>
+    </div>
+    <div class="hbox"><strong>5 models &middot; 7 game families &middot; 10 rounds &middot; 1,224 games total.</strong> Methodologically the closest thing in this literature to Camerer's experimental-GT tradition.</div>
+  </div>
+</div>
+
+<!-- 20: Akata — SCoT + design tension -->
+<div class="slide" id="sl20">
+  <div class="slide-section"><span class="pill pc">&#128997; Akata et al.</span> &middot; SCoT &amp; the design tension</div>
+  <div class="slide-title">"Predict the partner first"</div>
+  <div class="slide-body">
+    <p>Prompt GPT-4 to predict the partner's next move <em>before</em> choosing its own. Coordination substantially improves; blind evaluators rate it as more human-like.</p>
+    <div class="two-col">
+      <div class="card accent">
+        <h4>Unprompted GPT-4 in PD</h4>
+        <p><strong>Individually rational.</strong> Higher payoff via grim trigger.</p>
+      </div>
+      <div class="card accent">
+        <h4>SCoT-prompted GPT-4 in PD</h4>
+        <p><strong>More human-like.</strong> More forgiving, more cooperative.</p>
+      </div>
+    </div>
+    <div class="warn">"More human-like" is <em>not</em> the same as "more rational," and is sometimes its opposite. For joint welfare SCoT wins; for unilateral payoff maximisation against a defector, the unprompted model wins.</div>
+    <div class="disc">The field has not settled which should be the default evaluative criterion. That is a substantive question the metric silently decides.</div>
+  </div>
+</div>
+
+<!-- 21: Willis — evolutionary tournament -->
+<div class="slide" id="sl21">
+  <div class="slide-section"><span class="pill pc">&#128997; Willis et al.</span> &middot; Moran tournament</div>
+  <div class="slide-title">LLMs author strategies; evolution picks among them</div>
+  <div class="slide-body">
+    <p>Rather than asking an LLM to <em>play</em>, ask it to <em>write</em> IPD strategies as Python. Enter them into a <strong>Moran-process tournament</strong> &mdash; an evolutionary simulation where successful strategies reproduce and unsuccessful ones drop out.</p>
+    <div class="two-col">
+      <div class="card"><h4>GPT-4o-authored strategies</h4><p>Evolve toward <strong>aggression</strong>.</p></div>
+      <div class="card"><h4>Claude-authored strategies</h4><p>Evolve toward <strong>cooperation</strong>.</p></div>
+    </div>
+    <div class="hbox">Read Willis as <strong>Axelrod 1984 rerun with LLM-authored strategies</strong> in place of hand-submitted ones. Same analytic ceiling.</div>
+    <div class="warn">10% action noise breaks coordination. Whether a single model could generate a <em>diversity</em> of noise-robust strategies &mdash; a mixture question &mdash; is implicit in the setup, and not analysed.</div>
+  </div>
+</div>
+
+<!-- 22: What the red category adds up to + three positive claims -->
+<div class="slide" id="sl22">
+  <div class="slide-section">Interim synthesis</div>
+  <div class="slide-title">What the yellow + red categories give us</div>
+  <div class="slide-body">
+    <div class="tl">
+      <div class="tli"><div class="tln">1</div><div class="tlt"><strong>LLMs respond to game-theoretic structure.</strong> Payoff orderings theory says should matter do matter, for capable models. <span class="pill pa">Lor&egrave;</span> <span class="pill pa">Fan</span> <span class="pill pc">Akata</span></div></div>
+      <div class="tli"><div class="tln">2</div><div class="tlt"><strong>LLMs are sensitive to framing.</strong> Context shifts behaviour at fixed payoffs &mdash; reminiscent of Tversky&ndash;Kahneman. <span class="pill pa">Lor&egrave;</span></div></div>
+      <div class="tli"><div class="tln">3</div><div class="tlt"><strong>LLMs reproduce classical behavioural-economics effects directionally.</strong> <span class="pill pb">Horton</span></div></div>
+    </div>
+    <div class="warn">What iteration (red) <em>does not</em> buy on its own: <strong>within-model heterogeneity</strong>. Akata reports model-level profiles; Willis reports model-level tendencies. 12,240 trajectories in Akata &mdash; never unpacked.</div>
+  </div>
+</div>
+
+<!-- 23: Part II — the 1990s shift -->
+<div class="slide" id="sl23">
+  <div class="slide-section">Part II &middot; <span class="pill pp">The shift</span></div>
+  <div class="slide-title">From aggregate means to patterned heterogeneity</div>
+  <div class="slide-body">
+    <p>Behavioural GT 1960s&ndash;1990s: aggregate means.</p>
+    <p>Cooperation at <em>some</em> fraction. Ultimatum rejections at <em>some</em> rate.</p>
+    <div class="quote">Then a question: is the aggregate <strong>hiding</strong> the structure?</div>
+    <div class="hbox">Behind a 45% cooperation rate: some subjects cooperate 80%, others 15%, almost nobody at the mean.</div>
+    <div class="disc">The question is not <em>what is the average behaviour</em>, but <em>what kinds of agents are in the room</em>.</div>
+  </div>
+</div>
+
+<!-- 24: Fischbacher moment + methods -->
+<div class="slide" id="sl24">
+  <div class="slide-section">Part II &middot; <span class="pill pp">The canonical result</span></div>
+  <div class="slide-title">Fischbacher, G&auml;chter &amp; Fehr (2001) &rarr; the methods that followed</div>
+  <div class="slide-body">
+    <div class="three-col">
+      <div class="card accent">
+        <h4>&asymp; 50%</h4>
+        <p><strong>Conditional cooperators</strong> &mdash; contribute proportionally to beliefs.</p>
+      </div>
+      <div class="card">
+        <h4>&asymp; 30%</h4>
+        <p><strong>Free-riders</strong> &mdash; contribute near zero regardless.</p>
+      </div>
+      <div class="card">
+        <h4>residual</h4>
+        <p>Altruists, hump-shaped, inconsistent.</p>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card"><h4>Recovering types from trajectories</h4><p><strong>DTW</strong> (Sakoe &amp; Chiba 1978) + hierarchical / spectral clustering. Mixture models / HMMs.</p></div>
+      <div class="card"><h4>Recovering intentions</h4><p><strong>Inverse RL</strong>, hierarchical inverse Q-learning. What reward was the agent pursuing?</p></div>
+    </div>
+    <div class="succ">This is the machinery. It has existed for decades. It made behavioural GT into an empirical science.</div>
+  </div>
+</div>
+
+<!-- 25: LLM lit = 1996 -->
+<div class="slide" id="sl25">
+  <div class="slide-section">Part II &middot; <span class="pill pp">Diagnosis</span></div>
+  <div class="slide-title">The LLM literature is where behavioural GT was in 1996</div>
+  <div class="slide-body">
+    <div class="four-col">
+      <div class="card"><h4><span class="pill pb">Horton</span></h4><p>Heterogeneity <em>imposed</em> by persona. Not recovered.</p></div>
+      <div class="card"><h4><span class="pill pa">Lor&egrave;</span></h4><p>Bimodal GPT-4. Reported, then moved past.</p></div>
+      <div class="card"><h4><span class="pill pc">Akata</span></h4><p>Heterogeneity <em>cross-model only</em>. 12,240 trajectories not unpacked.</p></div>
+      <div class="card"><h4><span class="pill pt">Sun</span></h4><p>"Heterogeneity" = users, not model behaviour.</p></div>
+    </div>
+    <div class="hbox">Treat every trajectory as a unit. Ask: do they form clusters? Are the clusters stable across seeds, prompts, games? Is the latent structure a prompt artefact or a model property?</div>
+    <div class="disc">Not a criticism &mdash; a diagnosis. Each paper is well-executed in its own frame. The gap is at the field level.</div>
+  </div>
+</div>
+
+<!-- 26: Centaur — the partial counterexample (Part II) -->
+<div class="slide" id="sl26">
+  <div class="slide-section"><span class="pill pp">&#129002; Binz et al.</span> &middot; Centaur</div>
+  <div class="slide-title">The one partial counterexample &mdash; and what it still doesn't do</div>
+  <div class="slide-body">
+    <p>Llama 3.1 70B fine-tuned on <strong>Psych-101</strong> (10.7M choices, 160 experiments, natural-language-expressible only). Generalizes across modified cover stories, new problem structures, and new domains (LSAT). The paper on this reading list most directly aligned with the course title.</p>
+    <div class="two-col">
+      <div class="card teal"><h4>Fig. 2c &mdash; the mixture signal</h4><p>On the two-step task, Centaur produces a <strong>bimodal</strong> distribution over the model-based parameter: pure habit-learners, pure planners, mixtures in between. <em>Matches the human distribution.</em></p><p>The authors: "Not merely the average participant, but the distribution over trajectories."</p></div>
+      <div class="card amber"><h4>What Centaur still doesn't do</h4><p>No persona / demographic inputs. Can't answer the Fischbacher question: <em>are types stable across paradigms?</em></p><p>Psych-101 is cognitive psychology &mdash; <strong>no voting, survey, or negotiation data</strong> in the training distribution.</p></div>
+    </div>
+    <div class="succ">The field's default is still the aggregate. Fig. 2c is the one clear counterexample in this week's reading &mdash; and nobody has built on it.</div>
+  </div>
+</div>
+
+<!-- 27: Your questions, addressed -->
+<div class="slide" id="sl27">
+  <div class="slide-section">Your questions this week, addressed</div>
+  <div class="slide-title">Two short answers &mdash; and pointers to the rest</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card teal">
+        <h4><strong>Elena</strong> &mdash; how does Centaur align with the brain?</h4>
+        <p>Fig. 4 of the Centaur paper. Run each model on the trials humans saw in a scanner; regress the fMRI signal onto the hidden-layer activations; compare fits. Centaur beats Llama, with alignment peaking in middle layers.</p>
+        <p><strong>Fine-tuning on behavior reshaped the representations toward something more brain-like</strong> &mdash; <em>not</em> the stronger claim that Centaur is mechanistically a brain.</p>
+      </div>
+      <div class="card amber">
+        <h4><strong>Anastasiia, Artur, Elena</strong> &mdash; does stated reasoning match action?</h4>
+        <p>Fan's Ring-Network experiment is the closest existing answer: GPT-4 can <em>correctly articulate</em> the opponent's optimal move and <em>still not best-respond to it</em>. Fan labels these failure modes <em>belief overlooked</em> and <em>belief modified</em>.</p>
+        <p><strong>No paper treats CoT-trace-vs-action as a primary measurement target.</strong> Group-project angle: collect chain-of-thought traces across a factorial and ask whether they predict the moves that follow.</p>
+      </div>
+    </div>
+    <div class="hbox"><strong>Other questions, answered on earlier slides:</strong> <strong>Dmitrii</strong> on Psych-101 selection + socio-political scope &rarr; sl12 / sl26 &middot; <strong>Bhuvanesh, Anastasiia, Artur</strong> on Centaur generalization / individual differences / persona input &rarr; sl12 / sl26 &middot; <strong>Bhuvanesh</strong> on Akata SCoT "improving or moving away from rational?" &rarr; sl20 &middot; <strong>Artur</strong> on Willis 10%-noise failure &rarr; sl21 &middot; <strong>Bhuvanesh</strong> on GPT-4 as a stand-in for human participants &rarr; Park et al., sl29 &middot; <strong>everyone</strong> on reasoning vs pattern-matching &rarr; sl3, sl14.</div>
+    <div class="warn"><strong>Still open:</strong> <strong>Bhuvanesh</strong> &mdash; "what does 'beneficial outcomes for humanity' actually mean in practice?" The chapter won't answer this one &mdash; it's a values question. Taken up live in discussion.</div>
+  </div>
+</div>
+
+<!-- 28: Kozlowski & Evans — bridge to Jingyao -->
+<div class="slide" id="sl28">
+  <div class="slide-section">Bridge to Jingyao &middot; <span class="pill pt">&#129001; Kozlowski &amp; Evans</span></div>
+  <div class="slide-title">The validity apparatus itself, examined</div>
+  <div class="slide-body">
+    <p>We asked: does the behavioural-GT <em>method</em> transfer to LLMs?</p>
+    <p>They ask: does the social-science <em>validity apparatus</em> transfer at all?</p>
+    <div class="section-divider">Six reasons to worry</div>
+    <p><span class="pill pc">Bias</span> <span class="pill pc">Uniformity</span> <span class="pill pc">Atemporality</span> <span class="pill pc">Linguistic cultures</span> <span class="pill pc">Disembodiment</span> <span class="pill pc">Alien intelligence</span></p>
+    <div class="hbox"><strong>Uniformity</strong> (their Figure 6): GPT-4 on the GSS has <em>far lower variance</em> than the human population. Either (a) a few types the prompt fails to separate, or (b) no within-subject variability at all. <strong>Same underlying question as Part II.</strong></div>
+    <div class="disc">Two proposed paradigms &mdash; <em>validate-then-simulate</em> / <em>simulate-then-validate</em>. Careful, measured. Not "simulation is useless"; "it is technically difficult in specific ways."</div>
+  </div>
+</div>
+
+<!-- 29: Park & Vong — frontiers + discussion -->
+<div class="slide" id="sl29">
+  <div class="slide-section">Frontiers &amp; what to bring</div>
+  <div class="slide-title">Two pointers and a handful of threads</div>
+  <div class="slide-body">
+    <div class="two-col">
+      <div class="card">
+        <h4>Park et al. 2024 &mdash; 1,000 personas</h4>
+        <p>Each simulated person prompted with their own 2-hour interview transcript.</p>
+        <p><strong>85% test-retest</strong> with the real human on a survey battery.</p>
+        <p>Many-shot prompting as an alternative to fine-tuning.</p>
+      </div>
+      <div class="card">
+        <h4>Vong et al. 2024 &mdash; embodied</h4>
+        <p>VLM trained on <strong>65 hours</strong> of head-cam video from a 6&ndash;25-month-old child.</p>
+        <p>Grounds words to visual referents, not other words.</p>
+        <p>The remedy-direction for <em>disembodiment</em>.</p>
+      </div>
+    </div>
+    <div class="section-divider">Threads for discussion</div>
+    <div class="tl">
+      <div class="tli"><div class="tln">&#9733;</div><div class="tlt"><strong>Reasoning, restated through types.</strong> If GPT-4 is bimodal under identical prompts, do the two modes correspond to coherent strategic policies?</div></div>
+      <div class="tli"><div class="tln">&#9733;</div><div class="tlt"><strong>"Human-like" is a choice, not a default.</strong> SCoT makes the model more cooperative &mdash; and less rational. Which criterion is the field optimising for?</div></div>
+      <div class="tli"><div class="tln">&#9733;</div><div class="tlt"><strong>Multi-model replication is not optional.</strong> Single-model studies describe a specific system at a specific snapshot.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nbtn" id="pbtn" onclick="go(-1)" disabled>&#8592; Prev</button>
+  <div class="pips" id="piprow"></div>
+  <span class="slide-counter" id="counter">1 / 30</span>
+  <button class="nbtn" id="nbtn" onclick="go(1)">Next &#8594;</button>
+</div>
+
+<script>
+var cur = 0, total = 30;
+var piprow = document.getElementById('piprow');
+var counter = document.getElementById('counter');
+for (var i = 0; i < total; i++) {
+  var p = document.createElement('div');
+  p.className = 'pip' + (i === 0 ? ' on' : '');
+  p.setAttribute('data-i', String(i));
+  p.onclick = (function(idx){ return function(){ show(idx); }; })(i);
+  piprow.appendChild(p);
+}
+function show(n) {
+  document.getElementById('sl' + cur).classList.remove('active');
+  cur = n;
+  document.getElementById('sl' + cur).classList.add('active');
+  document.getElementById('pbtn').disabled = (cur === 0);
+  document.getElementById('nbtn').disabled = (cur === total - 1);
+  counter.textContent = (cur + 1) + ' / ' + total;
+  var ps = piprow.querySelectorAll('.pip');
+  for (var i = 0; i < ps.length; i++) {
+    ps[i].classList.toggle('on', i <= cur);
+  }
+}
+function go(d) {
+  var next = cur + d;
+  if (next >= 0 && next < total) show(next);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') go(-1);
+});
+</script>
+</body>
+</html>

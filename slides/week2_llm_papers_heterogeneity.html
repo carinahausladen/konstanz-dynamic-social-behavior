@@ -120,6 +120,55 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Ar
   </div>
 </div>
 
+<!-- 0a: Recap — from last week to this week -->
+<div class="slide" id="sl-recap">
+  <div class="slide-section">Week 2 → Week 3 · Recap</div>
+  <div class="slide-title">Last week, the foundations. This week, the transfer.</div>
+  <div class="slide-body">
+    <p>Last week we built the <strong>diagnostic language</strong>: normal-form games, Nash equilibrium, the 2×2 taxonomy (PD, Stag Hunt, Chicken, Harmony), repeated games, social preferences, and the <strong>behavioral-game-theory</strong> tradition that measures systematic human deviation from Nash play.</p>
+    <div class="section-divider">What this week does with it</div>
+    <div class="two-col">
+      <div class="card">
+        <h4>The move</h4>
+        <p>A small but fast-growing literature asks: <em>does this same diagnostic language work on LLMs?</em> Do language agents behave like <em>Homo economicus</em>, like human subjects with measurable biases, or like something else entirely?</p>
+      </div>
+      <div class="card">
+        <h4>The four papers</h4>
+        <p>Our four Week-2 readings are that strand. Horton: can we run behavioral-econ experiments on LLMs? Lorè &amp; Heydari: structure vs. framing. Akata: repeated play. Sun et al.: the field's map.</p>
+      </div>
+    </div>
+    <div class="disc"><strong>The thread for the next 25 minutes:</strong> use behavioral GT as the lens, and ask what the four papers found — and more pointedly, what they didn't look for. Patterned heterogeneity is the question we'll return to at the end.</div>
+  </div>
+</div>
+
+<!-- 0b: Sun Figure 1 — field map -->
+<div class="slide" id="sl-fieldmap">
+  <div class="slide-section">Field map · Sun et al. Fig. 1</div>
+  <div class="slide-title">Four branches where GT × LLM research sits</div>
+  <div class="slide-body">
+    <p>Before we zoom in, Sun et al.'s survey supplies the <strong>field map</strong>. Their four-branch taxonomy (Fig. 1) organizes what is otherwise a chaotic landscape:</p>
+    <div class="two-col">
+      <div class="card">
+        <h4>§2 · Evaluating LLMs in game-based playgrounds</h4>
+        <p>Run LLMs through games and measure how they play. Matrix games (PD, Stag Hunt), Avalon, bargaining, auctions. <strong>All four Week-2 papers sit here.</strong></p>
+      </div>
+      <div class="card">
+        <h4>§3 · Improving LLMs with game-theoretic methods</h4>
+        <p>Use GT tools — Shapley value, social choice, max-min — to make LLMs better. Sub-branches: interpretability (§3.1), preference alignment (§3.2), <strong>heterogeneity (§3.3)</strong>, dynamic adaptation (§3.4).</p>
+      </div>
+      <div class="card">
+        <h4>§4 · LLM-related events via game models</h4>
+        <p>Model the strategic dynamics <em>around</em> LLMs — developer competition, societal impact — through a game-theoretic lens.</p>
+      </div>
+      <div class="card">
+        <h4>§5 · Advancing game theory with LLMs</h4>
+        <p>Use LLM capabilities to solve intractable games or to extend classical models to richer, more realistic settings.</p>
+      </div>
+    </div>
+    <div class="warn"><strong>Watch §3.3.</strong> The Sun taxonomy lists <em>heterogeneity</em> as a sub-branch — but frames it as aligning LLMs to heterogeneous <strong>users</strong>. Heterogeneity of <strong>model behavior</strong> — the kind behavioral GT recovers from human data — is not the category they have in mind. We'll return to this in the Sun review slide.</div>
+  </div>
+</div>
+
 <!-- 1: Why this lens -->
 <div class="slide" id="sl1">
   <div class="slide-section">Framing · 1 of 10</div>
@@ -353,9 +402,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Ar
 </div>
 
 <script>
-var cur = 0, total = 12;
+var slides = document.querySelectorAll('.slide');
+var total = slides.length;
+var cur = 0;
 var piprow = document.getElementById('piprow');
 var counter = document.getElementById('counter');
+counter.textContent = '1 / ' + total;
 for (var i = 0; i < total; i++) {
   var p = document.createElement('div');
   p.className = 'pip' + (i === 0 ? ' on' : '');
@@ -364,9 +416,9 @@ for (var i = 0; i < total; i++) {
   piprow.appendChild(p);
 }
 function show(n) {
-  document.getElementById('sl' + cur).classList.remove('active');
+  slides[cur].classList.remove('active');
   cur = n;
-  document.getElementById('sl' + cur).classList.add('active');
+  slides[cur].classList.add('active');
   document.getElementById('pbtn').disabled = (cur === 0);
   document.getElementById('nbtn').disabled = (cur === total - 1);
   counter.textContent = (cur + 1) + ' / ' + total;
