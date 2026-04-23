@@ -28,7 +28,7 @@
 - `Binz et al. (2025) — Centaur.` Llama 3.1 70B fine-tuned on 10.7M human choices from 160 psychology experiments.
 
 
-### Three questions to bring with you
+### Questions to bring with you
 
 Anyone reading this literature for the first time surfaces roughly the same two threads. They are worth naming early, because the chapter comes back to each.
 
@@ -340,19 +340,5 @@ Two specific references in the chapter are worth flagging now — neither is on 
 
 - **`Park et al. (2024)` — the "1,000 persona" study.** Each simulated person is prompted with the transcript of a two-hour interview they themselves gave; the paper reports 85% test-retest agreement between a human and their LLM twin on a survey battery. `Kozlowski and Evans` cite this as the strongest *positive* case for LLM simulation. The method is worth naming: **many-shot prompting with the individual's own words in the context window** — not fine-tuning — which sidesteps the uniformity and bias failure modes by anchoring the model to a specific voice rather than a learned aggregate.
 - **`Vong et al. (2024)` — and the first-person-video frontier.** A vision-language model trained on roughly 65 hours of head-mounted first-person video from a child aged 6–25 months; the resulting model grounds words to visual referents rather than to other words. `Kozlowski and Evans` flag it as the remedy-direction for the *disembodiment* weakness. The larger point: this is the entry to a research programme that industry labs (Meta Ego4D and Project Aria, DeepMind, Apple) are investing in heavily, and that may become central to multi-agent social simulation in the next few years. **For anyone scouting a future group-project angle: first-person / embodied data as an alternative to text-only training is a live, open frontier.** 
-
----
-
-## Threads to carry into discussion
-
-- **The reasoning question, restated through types.** We began by asking whether LLMs *reason* or *pattern-match* when they play a game. The sharper, empirically tractable version: if GPT-4 produces a bimodal distribution under identical prompts, does each mode correspond to a coherent strategic policy, or do both modes emerge from a pattern-matching substrate conditioning on prompt features we have not measured? This is a question a mixture analysis could begin to answer. Nobody has run it.
-
-- **Generalization is an open empirical question.** The extensions most worth pushing on are the ones that move off the 2×2 binary grid: continuous-choice analogues of the PD, noise-robust strategy discovery (which shows up again in Willis et al. next week), multi-player variants of Battle of the Sexes, and natural-language negotiation. Each of these is a concrete research project that the four papers here have not attempted.
-
-- **"Human-like" is a choice, not a default.** The SCoT finding surfaces a design question the field tends to fold into a metric. When a prompting intervention makes a model more cooperative and human-like, it is by construction moving the model off whatever policy its unprompted behavior encoded. Whether that policy was the "rational" one, the "representative-human" one, or neither, is a substantive question that the evaluative criterion *more human-like* silently decides for us. If you want the model to be strictly rational, SCoT is a bug; if you want it to be a good coordination partner, SCoT is a feature. The literature has not yet been explicit about which of these it is optimizing for.
-
-- **Multi-model replication is not optional.** Every result here depends heavily on which model was tested. Single-model studies should be read as descriptions of a specific system at a specific training snapshot, not as claims about LLMs as a class. This is a methodological norm the field has not yet internalized, and it is the first one a careful empirical reader should impose.
-
-- **Stated reasoning versus chosen action.** A natural next question, which the papers touch on but do not make their primary object: does the model's verbal explanation match the action it takes? `Fan et al.` come closest — their Ring-Network experiment finds that GPT-4 can articulate the opponent's optimal move and *still not best-respond to it* (the failure modes they label *belief overlooked* and *belief modified*). None of this week's papers treat reasoning-trace-vs-action as a systematic measurement target. Collecting chain-of-thought traces across a factorial design and asking whether they predict the moves that follow is a direct group-project angle, and it sharpens the reasoning-vs-pattern-matching diagnostic considerably.
 
 ---
