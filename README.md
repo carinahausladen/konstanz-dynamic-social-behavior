@@ -98,7 +98,7 @@ Each reading below is presented by an assigned student discussant and counts tow
 **Week 4 (30 Apr) — Can LLMs stand in for humans?**
 1. [Social Simulacra: Creating Populated Prototypes for Social Computing Systems (Park et al., 2022)](https://arxiv.org/abs/2208.04024)
 2. [Generative Agents: Interactive Simulacra of Human Behavior (Park et al., UIST 2023)](https://arxiv.org/abs/2304.03442) — *Bhuvanesh Wadhwani*
-3. [Generative Agent Simulations of 1,000 People (Park et al., 2024)](https://arxiv.org/abs/2411.10109) — *Emrecan Ulu*
+3. [LLM Agents Grounded in Self-Reports Enable General-Purpose Simulation of Individuals (Park et al., 2024; originally titled "Generative Agent Simulations of 1,000 People")](https://arxiv.org/abs/2411.10109) — *Emrecan Ulu*
 4. [Predicting Results of Social Science Experiments Using Large Language Models (Hewitt, Ashokkumar, Ghezae & Willer, 2024)](https://ai4pb.stanford.edu/projects/predicting-results-of-social-science-experiments-using-large-language-models) — *Dmitrii Semichev*
 5. [LLM Social Simulations Are a Promising Research Method (Anthis et al., 2025)](https://arxiv.org/pdf/2504.02234) — *Anastasiia Khitrova*
 6. [In Silico Sociology: Forecasting COVID-19 Polarization with Large Language Models (2024)](https://arxiv.org/abs/2407.11190)
