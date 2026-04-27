@@ -14,6 +14,12 @@ orga/
 # Old drafts moved out of Topics/
 trash/
 
+# In-progress chapters — unlock into Topics/ only after that week's session
+Topics/drafts/
+
+# Slides — kept local, not tracked
+slides/
+
 # Defensive: never commit API keys
 JN/*API_KEY*
 JN/*.env
