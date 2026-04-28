@@ -6,4 +6,5 @@ scikit-learn
 tslearn
 jupyter
 groq
+openai
 tqdm
