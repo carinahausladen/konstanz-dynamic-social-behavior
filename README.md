@@ -29,8 +29,7 @@ Thursdays, 13:30–15:00
 
 ---
 
-Slides: [https://slides.com/carinah/fairness-and-collective-decision-making-in-ai](https://slides.com/carinah/fairness-and-collective-decision-making-in-ai)
-
+Slides: [https://slides.com/carinah/modeling-behavior](slides.com/carinah/modeling-behavior)
 Overleaf: [https://www.overleaf.com/6524355567nxbgzdwdmgkt#655081](https://www.overleaf.com/6524355567nxbgzdwdmgkt#655081)
 
 ---
