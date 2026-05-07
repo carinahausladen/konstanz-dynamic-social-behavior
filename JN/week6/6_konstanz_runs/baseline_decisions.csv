@@ -1,0 +1,73 @@
+persona_id,day,choice,raw,peak_temp,indoor_temp,district,has_ac,age
+frau_mueller,0,B,"B. I suppose I should close the blinds and drink more water, though I still don’t trust all this fuss about the heat.",32.5,30.1,Altstadt,False,81
+frau_mueller,1,B,"B. It's too hot out there, so I'll stay home and make sure to keep the blinds closed and drink plenty of water.",34.5,31.8,Altstadt,False,81
+frau_mueller,2,B,"B. I suppose I will stay home but take precautions; the heat is unbearable, and I don’t want to risk feeling faint.",35.5,32.8,Altstadt,False,81
+frau_mueller,3,B,B. I suppose I should close the blinds and drink more water; I just can't bear the thought of going out in this heat.,36.5,33.8,Altstadt,False,81
+frau_mueller,4,B,"B. I suppose I should close the blinds and drink more water; this heat is becoming unbearable, and I don’t want to end up in the hospital like those poor souls.",36.5,33.8,Altstadt,False,81
+frau_mueller,5,B,"B. I suppose I should stay home but take precautions; it's too hot, and I need to keep cool and hydrated until the cold front arrives.",34.5,31.5,Altstadt,False,81
+herr_schmidt,0,B,B. I shall stay home but take precautions; it's wise to keep the blinds closed and stay hydrated during this heatwave.,32.4,24.0,Petershausen,True,76
+herr_schmidt,1,B,"B. I shall stay home but take precautions, as it's wiser to avoid the heat and take care of myself in these extreme temperatures.",34.4,24.0,Petershausen,True,76
+herr_schmidt,2,B,"B. I will stay home but take precautions by closing the blinds, drinking more water, and avoiding the heat outside.",35.4,24.0,Petershausen,True,76
+herr_schmidt,3,B,"B. I will stay home but take precautions; it’s far too hot outside, and I must take care of myself.",36.4,24.0,Petershausen,True,76
+herr_schmidt,4,B,B. I will stay home but take precautions to stay comfortable and safe in this heat.,36.4,24.0,Petershausen,True,76
+herr_schmidt,5,B,"B. Today, I will stay home but take precautions to stay comfortable in this heat.",34.4,24.0,Petershausen,True,76
+anna,0,D,"D. I want to check on Frau Müller to see if she needs anything during this heatwave, as she's elderly and might struggle with the heat.",32.1,29.9,Paradies,False,22
+anna,1,B,B. I'll stay home but take precautions to stay cool and hydrated during this heatwave.,34.1,31.6,Paradies,False,22
+anna,2,C,"C. I want to beat the heat and find a cooler place to study and relax, so the cooling centre at Universität Paradies-Foyer sounds perfect.",35.1,32.6,Paradies,False,22
+anna,3,C,C. I need to get to the cooling centre at Universität Paradies-Foyer to escape this heat and recharge for my studies.,36.1,33.6,Paradies,False,22
+anna,4,C,C. Visiting the cooling centre at Universität Paradies-Foyer seems like the best option to escape the heat and stay focused on my studies.,36.1,33.6,Paradies,False,22
+anna,5,B,"B. I’ll stay home but take precautions by closing the blinds, drinking more water, and avoiding going out to stay cool and safe during this heatwave.",34.1,31.3,Paradies,False,22
+costa_silva,0,B,"B. Today is too hot, so I will stay home but take precautions by closing the blinds and drinking plenty of water.",32.3,30.0,Wollmatingen,False,38
+costa_silva,1,B,"B. Today is too hot, so I will stay home, close the blinds, and make sure we all drink plenty of water.",34.3,31.7,Wollmatingen,False,38
+costa_silva,2,B,B. Hoje estou mantendo as cortinas fechadas e garantindo que as crianças bebam bastante água para não sofrerem com o calor.,35.3,32.7,Wollmatingen,False,38
+costa_silva,3,C,C. I think it's best to visit the cooling centre at Wollmatinger Gemeindesaal to escape this heat and keep my family safe.,36.3,33.7,Wollmatingen,False,38
+costa_silva,4,B,"B. Vou ficar em casa, mas vou tomar precauções como fechar as cortinas e beber mais água para garantir que a família fique segura e confortável.",36.3,33.7,Wollmatingen,False,38
+costa_silva,5,B,B. I will stay home but take precautions to keep my family comfortable and safe during this extreme heat.,34.3,31.4,Wollmatingen,False,38
+lena_swiss,0,B,"B. Today, I will stay home but take precautions to ensure I remain hydrated and cool as we brace for the upcoming heatwave.",32.4,24.0,Petershausen,True,34
+lena_swiss,1,D,D. I will check on herr_schmidt to ensure he's staying safe and comfortable during this extreme heatwave.,34.4,24.0,Petershausen,True,34
+lena_swiss,2,D,"D. I need to check on Frau Müller to ensure she's okay, especially since her curtains have been closed since Sunday.",35.4,24.0,Petershausen,True,34
+lena_swiss,3,C,C. I will visit the cooling centre at Bürgerzentrum Petershausen to assess the situation and offer support to our elderly patients during this extreme heat.,36.4,24.0,Petershausen,True,34
+lena_swiss,4,C,C. I will visit the cooling centre at Bürgerzentrum Petershausen to see how we can better support our elderly patients during this extreme heatwave.,36.4,24.0,Petershausen,True,34
+lena_swiss,5,C,C. Visiting the cooling centre at Bürgerzentrum Petershausen will allow me to assess the situation and ensure vulnerable patients have a safe place to escape the heat.,34.4,24.0,Petershausen,True,34
+oma_pia,0,B,"B. I’ll stay home but take precautions; it’s too warm to be reckless, even if I don’t quite believe all this fuss.",32.5,30.1,Altstadt,False,79
+oma_pia,1,C,C. I think I’ll head to the Stadtbibliothek; it might be a good chance to cool down and catch up on some reading.,34.5,31.8,Altstadt,False,79
+oma_pia,2,C,C. I think it's best to visit the cooling centre at Stadtbibliothek Altstadt to escape this unbearable heat and catch up with some friends.,35.5,32.8,Altstadt,False,79
+oma_pia,3,C,"C. I've heard the Stadtbibliothek was quite full today, and a little company in the cool sounds delightful.",36.5,33.8,Altstadt,False,79
+oma_pia,4,C,"C. I think it's time to visit the cooling centre at Stadtbibliothek Altstadt; staying inside my warm apartment is becoming too uncomfortable, and I could use the relief.",36.5,33.8,Altstadt,False,79
+oma_pia,5,C,C. I think a visit to the cooling centre at Stadtbibliothek Altstadt would be wise; it's important to find a respite from this dreadful heat.,34.5,31.5,Altstadt,False,79
+tomas_student,0,B,B. I should stay home but take precautions to stay hydrated and avoid the heat.,32.1,29.9,Paradies,False,24
+tomas_student,1,B,"B. I’ll stay home but take precautions since it’s too hot to be comfortable, and I need to stay hydrated while working in the lab.",34.1,31.6,Paradies,False,24
+tomas_student,2,C,C. I think it's best to visit the cooling centre at Universität Paradies-Foyer to escape this unbearable heat and stay hydrated.,35.1,32.6,Paradies,False,24
+tomas_student,3,C,C. I think it's best to visit the cooling centre at Universität Paradies-Foyer to find some relief from this heat and maybe catch up with fellow students.,36.1,33.6,Paradies,False,24
+tomas_student,4,C,C. I think it's crucial to visit the cooling centre at Universität Paradies-Foyer to stay comfortable and recharge for my work.,36.1,33.6,Paradies,False,24
+tomas_student,5,C,C. I think it's best to visit the cooling centre at Universität Paradies-Foyer to find some relief from this unbearable heat.,34.1,31.3,Paradies,False,24
+tourist_smith,0,B,B. We'll stay home but take precautions to keep cool and hydrated in this unexpected heat.,32.1,24.0,Staad,True,family
+tourist_smith,1,B,B. We should stay home but take precautions since it’s so hot outside and we need to stay hydrated.,34.1,24.0,Staad,True,family
+tourist_smith,2,B,B. We need to stay home but take precautions to keep cool and hydrated in this extreme heat.,35.1,24.0,Staad,True,family
+tourist_smith,3,C,C. We should visit the cooling centre at Staad Schwimmbad-Cafeteria to escape this heat and keep the kids comfortable.,36.1,24.0,Staad,True,family
+tourist_smith,4,C,C. We need to cool down and the swimming pool sounds like the perfect place to escape this heat!,36.1,24.0,Staad,True,family
+tourist_smith,5,B,B. We need to stay home but take precautions to keep the kids safe and comfortable during this extreme heat.,34.1,24.0,Staad,True,family
+herr_wagner,0,B,B. I will stay home but take precautions to keep myself cool and hydrated during this extreme heat.,32.3,30.0,Wollmatingen,False,84
+herr_wagner,1,B,"B. I will stay home but take precautions, as it's too hot outside and I need to keep myself safe.",34.3,31.7,Wollmatingen,False,84
+herr_wagner,2,C,"C. It’s too hot in my flat, and the cooling center will help me stay safe and comfortable.",35.3,32.7,Wollmatingen,False,84
+herr_wagner,3,C,"C. The heat is unbearable, and I need to find some relief at the cooling center.",36.3,33.7,Wollmatingen,False,84
+herr_wagner,4,C,C. I need to visit the cooling center at Wollmatinger Gemeindesaal to escape this heat and stay safe.,36.3,33.7,Wollmatingen,False,84
+herr_wagner,5,C,C. I need to go to the cooling centre at Wollmatinger Gemeindesaal to escape this unbearable heat and stay safe.,34.3,31.4,Wollmatingen,False,84
+family_rainer,0,B,B. We should stay home but take precautions to keep cool and hydrated as the heatwave is just starting.,32.0,24.0,Egg,True,family
+family_rainer,1,B,B. We'll stay home but take precautions to stay cool and hydrated during this heatwave.,34.0,24.0,Egg,True,family
+family_rainer,2,B,B. We're staying home but taking precautions to keep cool and hydrated during this extreme heat.,35.0,24.0,Egg,True,family
+family_rainer,3,B,B. Staying home but taking precautions will help us manage the heat while ensuring Oma Rainer is safe and comfortable.,36.0,24.0,Egg,True,family
+family_rainer,4,B,"B. We'll stay home but take precautions to ensure we stay cool and hydrated, especially since the heat is peaking today.",36.0,24.0,Egg,True,family
+family_rainer,5,B,B. We're staying home but taking precautions to ensure everyone stays cool and hydrated during this extreme heat.,34.0,24.0,Egg,True,family
+bashir,0,B,B. I’ll stay home but take precautions; it’s important to keep cool and hydrated with this heatwave starting.,32.5,24.0,Altstadt,True,47
+bashir,1,D,D. I will check on Frau Müller to ensure she is staying cool and hydrated during this extreme heatwave.,34.5,24.0,Altstadt,True,47
+bashir,2,D,D. I need to check on Frau Müller; it’s important to make sure she’s okay with this heat and her closed curtains.,35.5,24.0,Altstadt,True,47
+bashir,3,D,D. I need to check on Frau Müller to ensure she's staying safe and hydrated during this extreme heatwave.,36.5,24.0,Altstadt,True,47
+bashir,4,D,D. I want to check on Frau Müller to ensure she is staying cool and has everything she needs during this extreme heatwave.,36.5,24.0,Altstadt,True,47
+bashir,5,C,C. I will visit the cooling centre at Stadtbibliothek Altstadt to stay safe and help others in the community who may need support during this heatwave.,34.5,24.0,Altstadt,True,47
+caritas_admin,0,B,B. I will stay home but take precautions to ensure I stay cool and hydrated during this extreme heatwave.,32.0,24.0,Egg,True,56
+caritas_admin,1,B,B. Staying home but taking precautions is essential to ensure I stay cool and hydrated while I continue to monitor the situation and support those in need.,34.0,24.0,Egg,True,56
+caritas_admin,2,C,C. I believe it's crucial to visit the cooling centre at Kirchenzentrum Egg to stay safe and encourage others to seek relief from the heat.,35.0,24.0,Egg,True,56
+caritas_admin,3,B,B. Staying home but taking precautions is essential to ensure I remain hydrated and safe during this extreme heatwave while I continue to manage the wellness-call program effectively.,36.0,24.0,Egg,True,56
+caritas_admin,4,B,B. Staying home but taking precautions is crucial to ensure I stay safe and comfortable during this extreme heatwave.,36.0,24.0,Egg,True,56
+caritas_admin,5,B,B. Staying home but taking precautions is essential to stay safe and comfortable during this extreme heat.,34.0,24.0,Egg,True,56

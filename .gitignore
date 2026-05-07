@@ -21,6 +21,8 @@ Topics/drafts/
 slides/
 
 # Defensive: never commit API keys
+.env
+.env.*
 JN/*API_KEY*
 JN/*.env
 JN/ANTHROPIC_API_KEY.txt
