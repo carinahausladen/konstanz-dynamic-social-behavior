@@ -1,6 +1,6 @@
 """Konstanz heatwave simulation — apparatus.
 
-The companion notebook ``6_konstanz.ipynb`` imports from this module and
+The companion notebook ``5_heatwave_simulation.ipynb`` imports from this module and
 provides commentary, visualization, and interpretation. Everything that
 *defines* the simulation lives here; everything that *narrates* or
 *analyses* it lives in the notebook.
@@ -37,7 +37,7 @@ import pandas as pd
 # 1. LLM helpers + cache + cost tracker
 # ============================================================
 
-CACHE_DIR = Path(__file__).parent / "6_konstanz_cache"
+CACHE_DIR = Path(__file__).parent / "5_heatwave_simulation_cache"
 CACHE_DIR.mkdir(exist_ok=True)
 CACHE_FILE = CACHE_DIR / "llm_cache.json"
 
