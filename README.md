@@ -9,13 +9,13 @@ Thursdays, 13:30–15:00
 | Phase                       |Week|Date| Topic/Activity                                     |
 | --------------------------- |:--:|:--:| -------------------------------------------------- |
 | Generating Ideas            |🟦 1|09 Apr| Introduction                                     |
-|                             |🟦 2|16 Apr| Game Theory — [notes](./Topics/week2_fundamentals.md) · [notebook](./JN/1_clustering_tutorial.ipynb) · Guest: Azza Bouleimen |
-|                             |🟦 3|23 Apr| Multi-agent dynamics & ToM — [notes](./Topics/week3_lecture_notes.md) · [slides](./slides/week3_lecture_notes.html) · notebooks [2](./JN/2_structure_vs_framing.ipynb), [3](./JN/3_ipd_tournament.ipynb) |
-|                             |🟦 4|30 Apr| [World Simulations](./Topics/llm-simulation.md)  |
-|                             |🟦 5|07 May| [World Simulations](./Topics/llm-simulation.md)  |
+|                             |🟦 2|16 Apr| [Game Theory](./Topics/02.md) · Guest: Azza Bouleimen |
+|                             |🟦 3|23 Apr| [Multi-agent dynamics and theory of mind](./Topics/03.md) |
+|                             |🟦 4|30 Apr| [Can LLMs simulate humans?](./Topics/04.md)      |
+|                             |🟦 5|07 May| [Emergent behavior and world simulations](./Topics/05.md) |
 |                             |    |14 May| no lecture                                       |
-|                             |🟦 6|21 May| [RL](./Topics/inverse_game_theory.md)            |
-|                             |🟦 7|28 May| [IRL](./Topics/inverse_game_theory.md)           |
+|                             |🟦 6|21 May| [Learning to cooperate](./Topics/06.md)          |
+|                             |🟦 7|28 May| [RL as institution designer](./Topics/07.md)     |
 | **Scientific Contribution** |    |04 Jun| no lecture                                       |
 |                             |🟨 8|11 Jun| Guest Lecture: Dino Carpentras                   |
 |                             |🟨 9|18 Jun| Guest Lecture: Dailisan & Argota Sánchez-Vaquerizo |
@@ -72,12 +72,12 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
 
 - Week 3 (23 Apr) — Multi-agent dynamics and theory of mind
   - [Simulating Subjects: The Promise and Peril of Artificial Intelligence Stand-Ins for Social Agents and Interactions](https://journals.sagepub.com/doi/abs/10.1177/00491241251337316) `Kozlowski & Evans 2025`
-- Week 4 (30 Apr) — Can LLMs stand in for humans?
+- Week 4 (30 Apr) — Can LLMs simulate humans?
   - [Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442) `Park 2023`
   - [LLM Agents Grounded in Self-Reports Enable General-Purpose Simulation of Individuals](https://arxiv.org/abs/2411.10109) `Park 2024`
   - [Predicting Results of Social Science Experiments Using Large Language Models](https://ai4pb.stanford.edu/projects/predicting-results-of-social-science-experiments-using-large-language-models) `Hewitt 2024`
   - [LLM Social Simulations Are a Promising Research Method](https://arxiv.org/pdf/2504.02234) `Anthis 2025`
-- Week 5 (07 May) — Emergent behavior and social intervention
+- Week 5 (07 May) — Emergent behavior and world simulations
   - [Project Sid: Many-agent Simulations toward AI Civilization](https://arxiv.org/abs/2411.00114) `Altera 2024`
   - [Emergent Social Conventions and Collective Bias in LLM Populations](https://www.science.org/doi/full/10.1126/sciadv.adu9368) `Ashery 2025`
   - [Can We Fix Social Media? Testing Prosocial Interventions using Generative Social Simulation](https://arxiv.org/pdf/2508.03385) `Larooij & Törnberg 2025`
@@ -86,8 +86,7 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
   - [Reinforcement Learning in a Prisoner's Dilemma](https://doi.org/10.1016/j.geb.2024.01.004) `Dolgopolov 2024`
   - [Scaffolding Cooperation in Human Groups with Deep Reinforcement Learning](https://www.nature.com/articles/s41562-023-01686-7) `Koster 2023`
   - [Human-level Play in the Game of Diplomacy by Combining Language Models with Strategic Reasoning](https://www.science.org/doi/10.1126/science.ade9097) `Meta FAIR 2022`
-- Week 7 (28 May) — Designing for prosocial outcomes
+- Week 7 (28 May) — RL as institution designer
   - [Deep Mechanism Design: Learning Social and Economic Policies for Human Benefit](https://www.pnas.org/doi/10.1073/pnas.2319949121) `Koster 2024`
   - [Deep Reinforcement Learning Can Promote Sustainable Human Behaviour in a Common-Pool Resource Problem](https://doi.org/10.1038/s41467-025-58043-7) `Koster 2025`
-  - [How Social Learning Enhances or Undermines Efficiency in Collective Decision-Making Under Uncertainty](https://www.pnas.org/doi/10.1073/pnas.2516827122) `Suganuma 2025`
 

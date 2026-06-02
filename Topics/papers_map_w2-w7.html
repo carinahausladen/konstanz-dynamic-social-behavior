@@ -18,7 +18,9 @@
   --c-purple: #3C3489;  --c-purple-bg: #EEEDFE;  /* 🟪 fine-tuning */
   --c-brown:  #5A3A1F;  --c-brown-bg:  #EEE5DB;  /* 🟫 multi-agent simulation */
   --c-orange: #8A3F0A;  --c-orange-bg: #FCE7D5;  /* 🟧 LLM-as-expert */
-  --c-pink:   #7A2454;  --c-pink-bg:   #F8E3EE;  /* RL as designer / mechanism (Weeks 6–7) */
+  --c-pink:   #7A2454;  --c-pink-bg:   #F8E3EE;  /* ⬛ RL as designer / mechanism (Weeks 6–7) */
+  --c-steel:  #0B5566;  --c-steel-bg:  #E0F0F3;  /* hybrid LLM + optimizer (Week 6) */
+  --c-slate:  #45474D;  --c-slate-bg:  #ECECEE;  /* pure RL · classical game (Week 6) */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -34,6 +36,8 @@
     --c-brown:#D5BC9C;   --c-brown-bg:  #4A2F18;
     --c-orange:#F4B98A;  --c-orange-bg: #6E330C;
     --c-pink: #F2B8D6;   --c-pink-bg:   #5C1A3F;
+    --c-steel:#9CD7E4;   --c-steel-bg:  #0B4250;
+    --c-slate:#C4C5CB;   --c-slate-bg:  #34353A;
   }
 }
 * { box-sizing: border-box; }
@@ -94,6 +98,13 @@ h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
   font-size: 12px; font-weight: 600; fill: var(--text2);
   letter-spacing: 0.05em;
 }
+.week-date {
+  font-size: 9.5px; font-weight: 600; letter-spacing: 0.07em;
+  fill: var(--text3);
+}
+.week-title {
+  font-size: 11px; font-weight: 600; fill: var(--text2);
+}
 .lineage-label {
   font-size: 12px; fill: var(--text); font-weight: 500;
   paint-order: stroke;
@@ -132,9 +143,6 @@ h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
 <div class="wrap">
 
 <h1>Papers map — Weeks 2–7</h1>
-<p class="lede">
-Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: position in the syllabus (W2 → W7). <strong>Y</strong>: what the agent is being modelled as — from the agent as a player in a game (bottom) up through individual stand-in, aggregate forecaster, population, and methodological commentary (top). Weeks 2–5 are LLM agents; Week 6 introduces non-LLM RL agents in the same diagram; Week 7 lifts the RL agent out of the game entirely, into the role of institution designer. <strong>Colour</strong>: methodological move, carried over from the chapter colour scheme. <strong>Lines</strong>: lineage and methodological response.
-</p>
 
 <div class="legend">
   <span class="item"><span class="swatch" style="background:var(--c-blue-bg);border-color:var(--c-blue);"></span> 🟦 individual / persona-grounded</span>
@@ -144,7 +152,9 @@ Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: pos
   <span class="item"><span class="swatch" style="background:var(--c-purple-bg);border-color:var(--c-purple);"></span> 🟪 fine-tuning</span>
   <span class="item"><span class="swatch" style="background:var(--c-brown-bg);border-color:var(--c-brown);"></span> 🟫 multi-agent simulation</span>
   <span class="item"><span class="swatch" style="background:var(--c-orange-bg);border-color:var(--c-orange);"></span> 🟧 LLM-as-expert</span>
-  <span class="item"><span class="swatch" style="background:var(--c-pink-bg);border-color:var(--c-pink);"></span> ◼ RL as designer / mechanism (W6–W7)</span>
+  <span class="item"><span class="swatch" style="background:var(--c-pink-bg);border-color:var(--c-pink);"></span> ⬛ RL as designer / mechanism (W6–W7)</span>
+  <span class="item"><span class="swatch" style="background:var(--c-steel-bg);border-color:var(--c-steel);"></span> hybrid LLM + optimizer (W6)</span>
+  <span class="item"><span class="swatch" style="background:var(--c-slate-bg);border-color:var(--c-slate);"></span> pure RL · classical game (W6)</span>
 </div>
 
 <div class="diagram">
@@ -194,12 +204,23 @@ Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: pos
   <line class="weekline" x1="1500" y1="60" x2="1500" y2="800"/>
   <line class="weekline" x1="1760" y1="60" x2="1760" y2="800"/>
 
-  <text class="week-label" x="325"  y="48" text-anchor="middle">WEEK 2 — game-theory eval</text>
-  <text class="week-label" x="585"  y="48" text-anchor="middle">WEEK 3 — wider battery &amp; fine-tune</text>
-  <text class="week-label" x="845"  y="48" text-anchor="middle">WEEK 4 — simulate people</text>
-  <text class="week-label" x="1107" y="48" text-anchor="middle">WEEK 5 — populations</text>
-  <text class="week-label" x="1370" y="48" text-anchor="middle">WEEK 6 — RL in social games</text>
-  <text class="week-label" x="1630" y="48" text-anchor="middle">WEEK 7 — RL as institution designer</text>
+  <text class="week-date"  x="325"  y="32" text-anchor="middle">WEEK 2 · 16 APR</text>
+  <text class="week-title" x="325"  y="50" text-anchor="middle">Game Theory</text>
+
+  <text class="week-date"  x="585"  y="32" text-anchor="middle">WEEK 3 · 23 APR</text>
+  <text class="week-title" x="585"  y="50" text-anchor="middle">Multi-agent dynamics and theory of mind</text>
+
+  <text class="week-date"  x="845"  y="32" text-anchor="middle">WEEK 4 · 30 APR</text>
+  <text class="week-title" x="845"  y="50" text-anchor="middle">Can LLMs simulate humans?</text>
+
+  <text class="week-date"  x="1107" y="32" text-anchor="middle">WEEK 5 · 07 MAY</text>
+  <text class="week-title" x="1107" y="50" text-anchor="middle">Emergent behavior and world simulations</text>
+
+  <text class="week-date"  x="1370" y="32" text-anchor="middle">WEEK 6 · 21 MAY</text>
+  <text class="week-title" x="1370" y="50" text-anchor="middle">Learning to cooperate</text>
+
+  <text class="week-date"  x="1630" y="32" text-anchor="middle">WEEK 7 · 28 MAY</text>
+  <text class="week-title" x="1630" y="50" text-anchor="middle">RL as institution designer</text>
 
   <!-- ============ LINEAGE LINES (drawn under the nodes) ============ -->
 
@@ -383,23 +404,23 @@ Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: pos
 
   <!-- W6: Xu (bottom band, hybrid LLM + RL) -->
   <g>
-    <rect x="1255" y="670" width="115" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
-    <text class="paper-label" x="1312" y="688" text-anchor="middle" fill="var(--c-coral)">Xu et al.</text>
-    <text class="paper-sub"   x="1312" y="702" text-anchor="middle" fill="var(--c-coral)">Werewolf · LLM + RL</text>
+    <rect x="1255" y="670" width="115" height="40" rx="6" fill="var(--c-steel-bg)" stroke="var(--c-steel)" stroke-width="1"/>
+    <text class="paper-label" x="1312" y="688" text-anchor="middle" fill="var(--c-steel)">Xu et al.</text>
+    <text class="paper-sub"   x="1312" y="702" text-anchor="middle" fill="var(--c-steel)">Werewolf · LLM + RL</text>
   </g>
 
   <!-- W6: FAIR / CICERO (bottom band, planner + LLM) -->
   <g>
-    <rect x="1383" y="670" width="110" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
-    <text class="paper-label" x="1438" y="688" text-anchor="middle" fill="var(--c-coral)">FAIR / CICERO</text>
-    <text class="paper-sub"   x="1438" y="702" text-anchor="middle" fill="var(--c-coral)">Diplomacy · planner + LLM</text>
+    <rect x="1383" y="670" width="110" height="40" rx="6" fill="var(--c-steel-bg)" stroke="var(--c-steel)" stroke-width="1"/>
+    <text class="paper-label" x="1438" y="688" text-anchor="middle" fill="var(--c-steel)">FAIR / CICERO</text>
+    <text class="paper-sub"   x="1438" y="702" text-anchor="middle" fill="var(--c-steel)">Diplomacy · planner + LLM</text>
   </g>
 
   <!-- W6: Dolgopolov (bottom band, pure Q-learning, no LLM) -->
   <g>
-    <rect x="1320" y="735" width="125" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
-    <text class="paper-label" x="1382" y="753" text-anchor="middle" fill="var(--c-coral)">Dolgopolov</text>
-    <text class="paper-sub"   x="1382" y="767" text-anchor="middle" fill="var(--c-coral)">Q-learning · stateless PD</text>
+    <rect x="1320" y="735" width="125" height="40" rx="6" fill="var(--c-slate-bg)" stroke="var(--c-slate)" stroke-width="1"/>
+    <text class="paper-label" x="1382" y="753" text-anchor="middle" fill="var(--c-slate)">Dolgopolov</text>
+    <text class="paper-sub"   x="1382" y="767" text-anchor="middle" fill="var(--c-slate)">Q-learning · stateless PD</text>
     <text class="paper-meta"  x="1382" y="789" text-anchor="middle">no LLM · closed form</text>
   </g>
 
@@ -421,69 +442,6 @@ Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: pos
 </svg>
 </div>
 
-<div class="section-eyebrow">What this picture is doing</div>
-
-<div class="notes">
-  <div class="note">
-    <h3>Y-axis: what the LLM substitutes for</h3>
-    <p>The chapters use seven colours; the colours encode <em>what method the paper runs</em>, not <em>what the paper is modelling</em>. The Y-axis here is the second question. Reading top-to-bottom: position papers <em>about</em> the field; populations of agents; aggregate effects across many people; one person or persona; and at the bottom, the LLM as a player whose own behaviour is the object of measurement.</p>
-    <p>The bands are not progress — a Week-2 yellow paper is not "behind" a Week-5 brown one. Each band asks a different question; the field's progression has been into <em>more bands at once</em>, not from one band to the next.</p>
-  </div>
-
-  <div class="note">
-    <h3>The three big lineages out of <code>Park 2023</code></h3>
-    <p>Smallville is the W4 paper that fans out into all three Week-5 papers. <strong>Project Sid</strong> scales the move up on two axes at once — more agents <em>and</em> a much longer simulated horizon. The horizon is what actually matters: Smallville's two days reach information diffusion and a Valentine's-day party; Project Sid's longer arc is where Durkheim-shaped phenomena (specialisation, cultural transmission, emergent governance) become observable. It also keeps an explicit cognitive architecture (PIANO) at a moment when individual prediction (<code>Park 2024</code>) had argued long context could replace architecture.</p>
-    <p><strong>Ashery</strong> moves in the opposite direction — strips the agent down to almost nothing — and tests whether the macro mechanism (<code>Centola 2018</code>'s naming-game tipping point) survives the strip-down. <strong>Larooij &amp; Törnberg</strong> apply the move to platforms: a population becomes a policy testbed.</p>
-  </div>
-
-  <div class="note">
-    <h3>The horizontal substitution debate</h3>
-    <p><code>Horton 2023</code> proposed silicon-sampling — anchor an LLM to a persona, run an experiment on it. <code>Park 2024</code> is the strongest empirical case for that proposal, eighteen months later, with two-hour interviews replacing one-paragraph personas. The <strong>thick blue line</strong> is the silicon-sampling lineage carrying Week 2's programmatic move into Week 4's empirical defence.</p>
-    <p>The dashed line between <code>Hewitt</code> and <code>Larooij</code> is the alternative on the other side: instead of simulating the population, ask the LLM directly to forecast the experiment. Two methods that often answer the same policy question and can disagree.</p>
-  </div>
-
-  <div class="note">
-    <h3>The methodological top band</h3>
-    <p>The three position-paper-shaped objects across W2–W4 read as a single conversation: <code>Sun 2025</code> maps the field; <code>Kozlowski &amp; Evans 2025</code> issue a six-weakness validity critique; <code>Anthis 2025</code> respond with a five-challenge optimistic-engineering programme. The <strong>top arrow</strong> is the conversation, not three independent surveys.</p>
-    <p>One absence worth naming: no Week-5 or Week-6 position paper. The empirical 🟫 and Week-6 RL papers have got ahead of the methodological commentary on them.</p>
-  </div>
-
-  <div class="note">
-    <h3>Where RL re-enters the picture (Week 6)</h3>
-    <p>The bottom band gains three agents this week — <code>Xu</code> (LLM + RL on Werewolf), <code>FAIR/CICERO</code> (planner + LLM on Diplomacy), and <code>Dolgopolov</code> (pure Q-learning on a stateless Prisoner's Dilemma). The first two are direct responses to the strategic-bias signal <code>Akata</code> picked up in Week 2: prompt-only LLMs play strategically worse than humans, and adding an explicit optimizer on top of the LLM closes most of the gap. The dashed arrow from <code>Akata</code> across four columns to <code>Xu</code> is that response.</p>
-    <p><code>Dolgopolov</code> sits at the opposite extreme — no LLM at all, a closed-form characterisation of when stateless Q-learners cooperate as a function of learning rate and payoff. The dashed arrow from <code>Ashery</code> down to <code>Dolgopolov</code> is the methodological move from <em>simulated</em> minimal-agent emergence to its <em>analytical</em> limit case.</p>
-    <p><code>McKee</code> is the genuinely new shape — pink in the legend, in the Population band but with the agent <em>acting on</em> the population rather than living inside it. The arrow from <code>Larooij</code> reads as the cohort-relevant transition: from human-designed prosocial interventions (chronological feed, bridging-based ranking) to an RL agent that <em>learns</em> the intervention by playing against simulated humans and is validated on real ones. This is the Week-6 move that generalises furthest into the cohort's experimental-economics background.</p>
-  </div>
-
-  <div class="note">
-    <h3>RL as institution designer (Week 7)</h3>
-    <p>Week 7 takes the pink <code>McKee</code> shape and presses it harder. The two papers — <code>Koster, Tacchetti et al. 2024</code> and <code>Koster, Pîslar et al. 2025</code> — keep the agent <em>acting on</em> the population, but widen its action space from rewiring a fixed network to choosing the <em>payoff rule</em> the population plays under. The first is the programmatic statement: deep RL as a general mechanism-design instrument — name a welfare target, simulate a population, search the rule space. The second points the same machinery at a common-pool resource game and reports the empirical performance/legibility frontier.</p>
-    <p>The arrow from <code>McKee</code> across the divider is the cleanest single trajectory in the syllabus: graph-rewiring planner (2023) → mechanism-design framework (2024) → learned redistribution rule with a measured legitimacy frontier (2025). The design question classical mechanism design settled in closed form has not vanished — it has moved into two choices the diagram cannot draw: <em>which welfare target</em>, and <em>which simulated population</em>.</p>
-  </div>
-
-  <div class="note">
-    <h3>The "missed-mixture" thread (Week-3 §8)</h3>
-    <p>The blue dashed thread links three places where within-prompt distribution structure is reported but unanalysed — <code>Lorè</code>'s bimodal GPT-4 in W2, <code>Centaur</code>'s Fig. 2c bimodal trajectories in W3 (the partial counter-example), and <code>Ashery</code>'s seed-dependent convention bimodality in W5.</p>
-    <p>The thread crosses three colours and four weeks; it is a <em>research-question shape</em> the existing colour scheme does not encode. A project that explicitly recovered behavioural types from any of these three datasets would close the gap between this literature and the behavioural-GT tradition that closed it for humans in 1996 (<code>Fischbacher, Gächter &amp; Fehr</code>).</p>
-  </div>
-
-  <div class="note">
-    <h3>What the picture obscures (and why that's OK)</h3>
-    <p>Two things the diagram drops on purpose: <em>publication date</em> (the X-axis is syllabus order, not chronology — <code>Sun 2025</code> and <code>Anthis 2025</code> were published in the same year despite being plotted three columns apart) and <em>citation graph</em> (only methodologically load-bearing connections are drawn; many additional citations exist).</p>
-    <p>The picture is built to surface the field's <em>methodological geometry</em>, not its bibliometric one. If the geometry is wrong, the picture is the thing to redraw.</p>
-  </div>
-</div>
-
-<div class="section-eyebrow">Open questions about the visual</div>
-<div class="note" style="margin-top: 8px;">
-  <p>Things to push on before this becomes a chapter figure:</p>
-  <p>• Is the Y-axis the right cut? Two alternatives: <em>validation rigor</em> (none → external ground truth) or <em>agent richness</em> (minimal → persona-conditioned). Each ranks the papers differently.</p>
-  <p>• Should <code>Centaur</code> sit higher than the W2/W3 yellows and reds? It predicts individuals, not just measures the model — the current placement may understate it.</p>
-  <p>• Should <code>Willis</code> and <code>Akata</code> climb a band into "population"? Two-agent repeated play is closer to a population-level claim than a single-decision measurement.</p>
-  <p>• Lineage lines: the diagram shows eleven; about a dozen more would be defensible. Which would help vs. clutter?</p>
-  <p>• Is the bottom band's relabel from "the LLM itself" to "the agent itself" the right one? It now houses two LLM-hybrids (<code>Xu</code>, <code>FAIR</code>) and a pure RL learner (<code>Dolgopolov</code>) — the same band but a wider taxonomy of agents than the W2/W3 yellows and reds.</p>
-  <p>• <code>McKee</code> and the two Week-7 <code>Koster</code> papers are plotted in the Population band because their <em>object of intervention</em> is a population. But the agent in each is a single RL designer, not a member of the population — with three such papers now, the case for a dedicated "designer" band above Methodology is stronger than it was at Week 6. Is the current shared-band placement still defensible, or does the designer move deserve its own row?</p>
-</div>
 
 </div>
 </body>

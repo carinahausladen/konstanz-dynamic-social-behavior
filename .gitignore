@@ -8,13 +8,13 @@ participatns.md
 .venv/
 __pycache__/
 
-# Organizational / student-identifying material (keep local)
+# Organizational 
 orga/
 
 # Old drafts moved out of Topics/
 trash/
 
-# In-progress chapters — unlock into Topics/ only after that week's session
+# In-progress chapters 
 Topics/drafts/
 
 # Slides — kept local, not tracked
