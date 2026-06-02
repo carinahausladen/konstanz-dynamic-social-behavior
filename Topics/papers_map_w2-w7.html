@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Papers map — Weeks 2–7</title>
+<style>
+:root {
+  --bg: #ffffff; --bg2: #f5f5f3; --bg3: #ededea;
+  --text: #1a1a18; --text2: #5a5a56; --text3: #9a9a94;
+  --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
+  --accent: #378ADD;
+
+  /* category colours, harmonised with slides/week3_lecture_notes.html */
+  --c-blue:   #0C447C;  --c-blue-bg:   #E6F1FB;  /* 🟦 individual / persona-grounded */
+  --c-teal:   #085041;  --c-teal-bg:   #E1F5EE;  /* 🟩 methodology / position */
+  --c-amber:  #633806;  --c-amber-bg:  #FAEEDA;  /* 🟨 static behavioral evaluation */
+  --c-coral:  #712B13;  --c-coral-bg:  #FAECE7;  /* 🟥 dynamic / repeated games */
+  --c-purple: #3C3489;  --c-purple-bg: #EEEDFE;  /* 🟪 fine-tuning */
+  --c-brown:  #5A3A1F;  --c-brown-bg:  #EEE5DB;  /* 🟫 multi-agent simulation */
+  --c-orange: #8A3F0A;  --c-orange-bg: #FCE7D5;  /* 🟧 LLM-as-expert */
+  --c-pink:   #7A2454;  --c-pink-bg:   #F8E3EE;  /* RL as designer / mechanism (Weeks 6–7) */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14140f; --bg2: #1c1c17; --bg3: #232320;
+    --text: #ebebe6; --text2: #b3b3ad; --text3: #80807a;
+    --border: rgba(255,255,255,0.13); --border2: rgba(255,255,255,0.25);
+    --accent: #6BB0F2;
+    --c-blue: #B5D4F4;   --c-blue-bg:   #0C447C;
+    --c-teal: #9FE1CB;   --c-teal-bg:   #085041;
+    --c-amber:#FAC775;   --c-amber-bg:  #633806;
+    --c-coral:#F5C4B3;   --c-coral-bg:  #712B13;
+    --c-purple:#CECBF6;  --c-purple-bg: #3C3489;
+    --c-brown:#D5BC9C;   --c-brown-bg:  #4A2F18;
+    --c-orange:#F4B98A;  --c-orange-bg: #6E330C;
+    --c-pink: #F2B8D6;   --c-pink-bg:   #5C1A3F;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+.wrap { max-width: 1540px; margin: 0 auto; padding: 32px 24px 64px; }
+h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.lede { color: var(--text2); font-size: 14px; margin: 0 0 24px; max-width: 880px; }
+.section-eyebrow {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text3);
+  margin: 28px 0 8px;
+}
+
+/* legend */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+  border: 0.5px solid var(--border); border-radius: 7px;
+  padding: 10px 14px; background: var(--bg2);
+  margin-bottom: 18px; font-size: 12.5px;
+}
+.legend .item { display: inline-flex; align-items: center; gap: 6px; }
+.legend .swatch {
+  width: 11px; height: 11px; border-radius: 2px; flex: none;
+  border: 0.5px solid var(--border2);
+}
+
+/* the diagram */
+.diagram {
+  border: 0.5px solid var(--border); border-radius: 10px;
+  background: var(--bg);
+  overflow: hidden;
+  position: relative;
+}
+.diagram svg { display: block; width: 100%; height: auto; }
+
+/* paper card text */
+.paper-label {
+  font-size: 11.5px; font-weight: 600;
+}
+.paper-sub {
+  font-size: 10px; fill: var(--text2);
+}
+.paper-meta {
+  font-size: 9.5px; fill: var(--text3); font-style: italic;
+}
+.band-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  fill: var(--text3);
+}
+.band-sub {
+  font-size: 10px; fill: var(--text3);
+}
+.week-label {
+  font-size: 12px; font-weight: 600; fill: var(--text2);
+  letter-spacing: 0.05em;
+}
+.lineage-label {
+  font-size: 12px; fill: var(--text); font-weight: 500;
+  paint-order: stroke;
+  stroke: var(--bg); stroke-width: 6px; stroke-linejoin: round;
+}
+.thread-label {
+  font-size: 11.5px; fill: var(--accent); font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--bg); stroke-width: 6px; stroke-linejoin: round;
+}
+
+.bandline { stroke: var(--border); stroke-width: 0.5; stroke-dasharray: 2 4; }
+.weekline { stroke: var(--border); stroke-width: 0.5; }
+
+.lineage { fill: none; stroke: var(--text3); stroke-width: 1; }
+.lineage.strong { stroke: var(--text2); stroke-width: 1.4; }
+.lineage.dashed { stroke-dasharray: 4 4; }
+.thread { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 2 5; opacity: 0.65; }
+
+/* notes */
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.note {
+  border: 0.5px solid var(--border); border-radius: 7px; padding: 12px 14px;
+  background: var(--bg2); font-size: 13px;
+}
+.note h3 { margin: 0 0 6px; font-size: 12.5px; font-weight: 600; }
+.note p { margin: 0 0 6px; color: var(--text2); }
+.note p:last-child { margin: 0; }
+.note code {
+  font-size: 12px; background: var(--bg3); padding: 0 4px; border-radius: 3px;
+}
+@media (max-width: 760px) { .notes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Papers map — Weeks 2–7</h1>
+<p class="lede">
+Twenty-two papers across six weeks, plotted on two axes. <strong>X</strong>: position in the syllabus (W2 → W7). <strong>Y</strong>: what the agent is being modelled as — from the agent as a player in a game (bottom) up through individual stand-in, aggregate forecaster, population, and methodological commentary (top). Weeks 2–5 are LLM agents; Week 6 introduces non-LLM RL agents in the same diagram; Week 7 lifts the RL agent out of the game entirely, into the role of institution designer. <strong>Colour</strong>: methodological move, carried over from the chapter colour scheme. <strong>Lines</strong>: lineage and methodological response.
+</p>
+
+<div class="legend">
+  <span class="item"><span class="swatch" style="background:var(--c-blue-bg);border-color:var(--c-blue);"></span> 🟦 individual / persona-grounded</span>
+  <span class="item"><span class="swatch" style="background:var(--c-teal-bg);border-color:var(--c-teal);"></span> 🟩 methodology / position</span>
+  <span class="item"><span class="swatch" style="background:var(--c-amber-bg);border-color:var(--c-amber);"></span> 🟨 static behavioral evaluation</span>
+  <span class="item"><span class="swatch" style="background:var(--c-coral-bg);border-color:var(--c-coral);"></span> 🟥 dynamic / repeated games</span>
+  <span class="item"><span class="swatch" style="background:var(--c-purple-bg);border-color:var(--c-purple);"></span> 🟪 fine-tuning</span>
+  <span class="item"><span class="swatch" style="background:var(--c-brown-bg);border-color:var(--c-brown);"></span> 🟫 multi-agent simulation</span>
+  <span class="item"><span class="swatch" style="background:var(--c-orange-bg);border-color:var(--c-orange);"></span> 🟧 LLM-as-expert</span>
+  <span class="item"><span class="swatch" style="background:var(--c-pink-bg);border-color:var(--c-pink);"></span> ◼ RL as designer / mechanism (W6–W7)</span>
+</div>
+
+<div class="diagram">
+<svg viewBox="0 0 1800 880" xmlns="http://www.w3.org/2000/svg" aria-label="Map of papers from weeks 2 to 7">
+
+  <!-- arrowheads -->
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text3)"/>
+    </marker>
+    <marker id="arr-strong" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text2)"/>
+    </marker>
+    <marker id="arr-thread" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- Y-axis band labels (left margin) -->
+  <text class="band-label" x="20" y="120">Methodology</text>
+  <text class="band-sub"   x="20" y="138">field maps, position papers</text>
+
+  <text class="band-label" x="20" y="280">Population</text>
+  <text class="band-sub"   x="20" y="298">many LLM agents over time</text>
+
+  <text class="band-label" x="20" y="440">Aggregate effect</text>
+  <text class="band-sub"   x="20" y="458">forecast a treatment effect</text>
+
+  <text class="band-label" x="20" y="580">Individual / persona</text>
+  <text class="band-sub"   x="20" y="598">stand in for a person or type</text>
+
+  <text class="band-label" x="20" y="720">The agent itself</text>
+  <text class="band-sub"   x="20" y="738">measure the agent in a game</text>
+
+  <!-- band separators -->
+  <line class="bandline" x1="195" y1="200" x2="1760" y2="200"/>
+  <line class="bandline" x1="195" y1="360" x2="1760" y2="360"/>
+  <line class="bandline" x1="195" y1="500" x2="1760" y2="500"/>
+  <line class="bandline" x1="195" y1="640" x2="1760" y2="640"/>
+
+  <!-- Week column dividers + labels -->
+  <line class="weekline" x1="195"  y1="60" x2="195"  y2="800"/>
+  <line class="weekline" x1="455"  y1="60" x2="455"  y2="800"/>
+  <line class="weekline" x1="715"  y1="60" x2="715"  y2="800"/>
+  <line class="weekline" x1="975"  y1="60" x2="975"  y2="800"/>
+  <line class="weekline" x1="1240" y1="60" x2="1240" y2="800"/>
+  <line class="weekline" x1="1500" y1="60" x2="1500" y2="800"/>
+  <line class="weekline" x1="1760" y1="60" x2="1760" y2="800"/>
+
+  <text class="week-label" x="325"  y="48" text-anchor="middle">WEEK 2 — game-theory eval</text>
+  <text class="week-label" x="585"  y="48" text-anchor="middle">WEEK 3 — wider battery &amp; fine-tune</text>
+  <text class="week-label" x="845"  y="48" text-anchor="middle">WEEK 4 — simulate people</text>
+  <text class="week-label" x="1107" y="48" text-anchor="middle">WEEK 5 — populations</text>
+  <text class="week-label" x="1370" y="48" text-anchor="middle">WEEK 6 — RL in social games</text>
+  <text class="week-label" x="1630" y="48" text-anchor="middle">WEEK 7 — RL as institution designer</text>
+
+  <!-- ============ LINEAGE LINES (drawn under the nodes) ============ -->
+
+  <!-- Horton (W2) → Park 2024 (W4): silicon-sampling lineage (curved across columns) -->
+  <path class="lineage strong" d="M 290 575 C 450 540, 600 540, 800 575" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="545" y="552" text-anchor="middle">silicon-sampling lineage</text>
+
+  <!-- Sun (W2) → Kozlowski (W3) → Anthis (W4): methodology evolution -->
+  <path class="lineage" d="M 290 122 L 535 122" marker-end="url(#arr)"/>
+  <path class="lineage" d="M 638 122 L 800 122" marker-end="url(#arr)"/>
+  <text class="lineage-label" x="412" y="125" text-anchor="middle">validity critique</text>
+  <text class="lineage-label" x="719" y="125" text-anchor="middle">engineering response</text>
+
+  <!-- Lorè (W2) → Fan (W3): systematic version (crosses column) -->
+  <path class="lineage" d="M 313 690 Q 390 700 465 690" marker-end="url(#arr)"/>
+  <text class="lineage-label" x="389" y="684" text-anchor="middle">systematic version</text>
+
+  <!-- Akata (W2) → Willis (W3): evolutionary extension (crosses column) -->
+  <path class="lineage" d="M 385 750 Q 435 760 488 763" marker-end="url(#arr)"/>
+  <text class="lineage-label" x="436" y="744" text-anchor="middle">evolutionary extension</text>
+
+  <!-- Park 2023 (W4) → Project Sid (W5): scaled up + keeps architecture -->
+  <path class="lineage strong" d="M 845 282 C 920 235, 985 215, 1050 220" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="947" y="228" text-anchor="middle">scaled up · long horizon</text>
+
+  <!-- Park 2023 (W4) → Ashery (W5): stripped down -->
+  <path class="lineage strong" d="M 845 295 C 920 305, 985 305, 1050 305" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="947" y="304" text-anchor="middle">stripped down · minimal agents</text>
+
+  <!-- Park 2023 (W4) → Larooij (W5): policy testbed -->
+  <path class="lineage strong" d="M 845 308 C 935 360, 1015 380, 1098 376" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="970" y="362" text-anchor="middle">platform · policy testbed</text>
+
+  <!-- Hewitt (W4) ↔ Larooij (W5): forecast vs simulate -->
+  <path class="lineage dashed" d="M 855 432 C 950 422, 1020 388, 1098 378"/>
+  <text class="lineage-label" x="975" y="408" text-anchor="middle">forecast vs simulate</text>
+
+  <!-- Larooij (W5) → McKee (W6): from human-designed to RL-learned interventions -->
+  <path class="lineage strong" d="M 1168 378 C 1230 340, 1255 300, 1290 270" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="1238" y="322" text-anchor="middle">RL learns the intervention</text>
+
+  <!-- McKee (W6) → Koster, Tacchetti (W7): from rewiring a network to setting the rules -->
+  <path class="lineage strong" d="M 1420 262 C 1470 250, 1505 244, 1540 238" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="1480" y="232" text-anchor="middle">RL sets the rule</text>
+
+  <!-- Koster, Tacchetti (W7) → Koster, Pîslar (W7): programmatic framework → applied to a commons -->
+  <path class="lineage strong" d="M 1630 259 L 1630 296" marker-end="url(#arr-strong)"/>
+  <text class="lineage-label" x="1648" y="282" text-anchor="start">applied to a commons</text>
+
+  <!-- Akata (W2) → Xu (W6): the strategic-bias gap and RL's response -->
+  <path class="lineage dashed" d="M 385 752 C 700 815, 1000 780, 1262 690" marker-end="url(#arr)"/>
+  <text class="lineage-label" x="828" y="796" text-anchor="middle">RL closes the strategic gap</text>
+
+  <!-- Ashery (W5) → Dolgopolov (W6): minimal-agent emergence → analytical limit -->
+  <path class="lineage dashed" d="M 1105 308 C 1200 470, 1265 620, 1322 745" marker-end="url(#arr)"/>
+  <text class="lineage-label" x="1238" y="512" text-anchor="middle">minimal agents · analytical limit</text>
+
+  <!-- Kozlowski → Anthis: insider response (parallel to top arrow but at angle, optional, skipped to avoid clutter) -->
+
+  <!-- ============ MISSED-MIXTURE THREAD (cross-cutting, blue/accent) ============ -->
+  <path class="thread" d="M 220 668 C 350 580, 480 555, 537 575"/>
+  <path class="thread" d="M 537 575 C 700 480, 880 320, 1050 295" marker-end="url(#arr-thread)"/>
+  <text class="thread-label" x="380" y="600" text-anchor="middle">missed-mixture thread</text>
+  <text class="thread-label" x="780" y="430" text-anchor="middle">bimodality, unanalysed → Centaur captures → returns in Ashery</text>
+
+  <!-- ============ NODES ============ -->
+
+  <!-- W2: Sun (methodology) -->
+  <g>
+    <rect x="240" y="100" width="100" height="40" rx="6" fill="var(--c-teal-bg)" stroke="var(--c-teal)" stroke-width="1"/>
+    <text class="paper-label" x="290" y="118" text-anchor="middle" fill="var(--c-teal)">Sun et al.</text>
+    <text class="paper-sub"   x="290" y="132" text-anchor="middle" fill="var(--c-teal)">GT×LLM survey</text>
+  </g>
+
+  <!-- W2: Horton (individual) -->
+  <g>
+    <rect x="240" y="555" width="100" height="40" rx="6" fill="var(--c-blue-bg)" stroke="var(--c-blue)" stroke-width="1"/>
+    <text class="paper-label" x="290" y="573" text-anchor="middle" fill="var(--c-blue)">Horton et al.</text>
+    <text class="paper-sub"   x="290" y="587" text-anchor="middle" fill="var(--c-blue)">Homo silicus</text>
+  </g>
+
+  <!-- W2: Lorè (yellow), Akata (red) -->
+  <g>
+    <rect x="213" y="670" width="100" height="40" rx="6" fill="var(--c-amber-bg)" stroke="var(--c-amber)" stroke-width="1"/>
+    <text class="paper-label" x="263" y="688" text-anchor="middle" fill="var(--c-amber)">Lorè &amp; Heydari</text>
+    <text class="paper-sub"   x="263" y="702" text-anchor="middle" fill="var(--c-amber)">structure vs framing</text>
+  </g>
+  <g>
+    <rect x="285" y="730" width="100" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
+    <text class="paper-label" x="335" y="748" text-anchor="middle" fill="var(--c-coral)">Akata et al.</text>
+    <text class="paper-sub"   x="335" y="762" text-anchor="middle" fill="var(--c-coral)">repeated games</text>
+  </g>
+
+  <!-- W3: Kozlowski & Evans (methodology) -->
+  <g>
+    <rect x="488" y="100" width="100" height="40" rx="6" fill="var(--c-teal-bg)" stroke="var(--c-teal)" stroke-width="1"/>
+    <text class="paper-label" x="538" y="118" text-anchor="middle" fill="var(--c-teal)">Kozlowski &amp; Evans</text>
+    <text class="paper-sub"   x="538" y="132" text-anchor="middle" fill="var(--c-teal)">Simulating Subjects</text>
+  </g>
+
+  <!-- W3: Centaur (individual / fine-tune) -->
+  <g>
+    <rect x="488" y="555" width="100" height="40" rx="6" fill="var(--c-purple-bg)" stroke="var(--c-purple)" stroke-width="1"/>
+    <text class="paper-label" x="538" y="573" text-anchor="middle" fill="var(--c-purple)">Centaur (Binz)</text>
+    <text class="paper-sub"   x="538" y="587" text-anchor="middle" fill="var(--c-purple)">fine-tune on Psych-101</text>
+  </g>
+
+  <!-- W3: Fan (yellow), MindGames (yellow), Willis (red) -->
+  <g>
+    <rect x="465" y="670" width="80" height="40" rx="6" fill="var(--c-amber-bg)" stroke="var(--c-amber)" stroke-width="1"/>
+    <text class="paper-label" x="505" y="688" text-anchor="middle" fill="var(--c-amber)">Fan et al.</text>
+    <text class="paper-sub"   x="505" y="702" text-anchor="middle" fill="var(--c-amber)">rationality battery</text>
+  </g>
+  <g>
+    <rect x="558" y="700" width="100" height="40" rx="6" fill="var(--c-amber-bg)" stroke="var(--c-amber)" stroke-width="1"/>
+    <text class="paper-label" x="608" y="718" text-anchor="middle" fill="var(--c-amber)">MindGames</text>
+    <text class="paper-sub"   x="608" y="732" text-anchor="middle" fill="var(--c-amber)">ToM × games</text>
+  </g>
+  <g>
+    <rect x="488" y="745" width="100" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
+    <text class="paper-label" x="538" y="763" text-anchor="middle" fill="var(--c-coral)">Willis et al.</text>
+    <text class="paper-sub"   x="538" y="777" text-anchor="middle" fill="var(--c-coral)">Moran tournament</text>
+  </g>
+
+  <!-- W4: Anthis (methodology) -->
+  <g>
+    <rect x="750" y="100" width="100" height="40" rx="6" fill="var(--c-teal-bg)" stroke="var(--c-teal)" stroke-width="1"/>
+    <text class="paper-label" x="800" y="118" text-anchor="middle" fill="var(--c-teal)">Anthis et al.</text>
+    <text class="paper-sub"   x="800" y="132" text-anchor="middle" fill="var(--c-teal)">position paper</text>
+  </g>
+
+  <!-- W4: Park 2023 Smallville (population) -->
+  <g>
+    <rect x="750" y="262" width="100" height="40" rx="6" fill="var(--c-brown-bg)" stroke="var(--c-brown)" stroke-width="1"/>
+    <text class="paper-label" x="800" y="280" text-anchor="middle" fill="var(--c-brown)">Park 2023</text>
+    <text class="paper-sub"   x="800" y="294" text-anchor="middle" fill="var(--c-brown)">Smallville</text>
+    <text class="paper-meta"  x="800" y="316" text-anchor="middle">25 agents · 2 days</text>
+  </g>
+
+  <!-- W4: Hewitt (aggregate / expert) -->
+  <g>
+    <rect x="750" y="412" width="100" height="40" rx="6" fill="var(--c-orange-bg)" stroke="var(--c-orange)" stroke-width="1"/>
+    <text class="paper-label" x="800" y="430" text-anchor="middle" fill="var(--c-orange)">Hewitt et al.</text>
+    <text class="paper-sub"   x="800" y="444" text-anchor="middle" fill="var(--c-orange)">forecast experiments</text>
+  </g>
+
+  <!-- W4: Park 2024 (individual) -->
+  <g>
+    <rect x="750" y="555" width="100" height="40" rx="6" fill="var(--c-blue-bg)" stroke="var(--c-blue)" stroke-width="1"/>
+    <text class="paper-label" x="800" y="573" text-anchor="middle" fill="var(--c-blue)">Park 2024</text>
+    <text class="paper-sub"   x="800" y="587" text-anchor="middle" fill="var(--c-blue)">interview-grounded agents</text>
+  </g>
+
+  <!-- W5 browns: Project Sid, Ashery, Larooij -->
+  <g>
+    <rect x="1000" y="210" width="105" height="40" rx="6" fill="var(--c-brown-bg)" stroke="var(--c-brown)" stroke-width="1"/>
+    <text class="paper-label" x="1052" y="228" text-anchor="middle" fill="var(--c-brown)">Project Sid</text>
+    <text class="paper-sub"   x="1052" y="242" text-anchor="middle" fill="var(--c-brown)">Minecraft civilization</text>
+    <text class="paper-meta"  x="1052" y="264" text-anchor="middle">10–1000+ agents · long horizon</text>
+  </g>
+  <g>
+    <rect x="1000" y="285" width="105" height="40" rx="6" fill="var(--c-brown-bg)" stroke="var(--c-brown)" stroke-width="1"/>
+    <text class="paper-label" x="1052" y="303" text-anchor="middle" fill="var(--c-brown)">Ashery et al.</text>
+    <text class="paper-sub"   x="1052" y="317" text-anchor="middle" fill="var(--c-brown)">naming game</text>
+    <text class="paper-meta"  x="1052" y="339" text-anchor="middle">tens–hundreds · game rounds</text>
+  </g>
+  <g>
+    <rect x="1048" y="358" width="120" height="40" rx="6" fill="var(--c-brown-bg)" stroke="var(--c-brown)" stroke-width="1"/>
+    <text class="paper-label" x="1108" y="376" text-anchor="middle" fill="var(--c-brown)">Larooij &amp; Törnberg</text>
+    <text class="paper-sub"   x="1108" y="390" text-anchor="middle" fill="var(--c-brown)">synthetic platform</text>
+    <text class="paper-meta"  x="1108" y="412" text-anchor="middle">500 agents · 10,000 steps</text>
+  </g>
+
+  <!-- W6: McKee (population band, RL as designer) -->
+  <g>
+    <rect x="1280" y="245" width="140" height="44" rx="6" fill="var(--c-pink-bg)" stroke="var(--c-pink)" stroke-width="1"/>
+    <text class="paper-label" x="1350" y="263" text-anchor="middle" fill="var(--c-pink)">McKee et al.</text>
+    <text class="paper-sub"   x="1350" y="277" text-anchor="middle" fill="var(--c-pink)">scaffolding cooperation</text>
+    <text class="paper-meta"  x="1350" y="307" text-anchor="middle">RL planner · 16 humans · network rewire</text>
+  </g>
+
+  <!-- W6: Xu (bottom band, hybrid LLM + RL) -->
+  <g>
+    <rect x="1255" y="670" width="115" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
+    <text class="paper-label" x="1312" y="688" text-anchor="middle" fill="var(--c-coral)">Xu et al.</text>
+    <text class="paper-sub"   x="1312" y="702" text-anchor="middle" fill="var(--c-coral)">Werewolf · LLM + RL</text>
+  </g>
+
+  <!-- W6: FAIR / CICERO (bottom band, planner + LLM) -->
+  <g>
+    <rect x="1383" y="670" width="110" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
+    <text class="paper-label" x="1438" y="688" text-anchor="middle" fill="var(--c-coral)">FAIR / CICERO</text>
+    <text class="paper-sub"   x="1438" y="702" text-anchor="middle" fill="var(--c-coral)">Diplomacy · planner + LLM</text>
+  </g>
+
+  <!-- W6: Dolgopolov (bottom band, pure Q-learning, no LLM) -->
+  <g>
+    <rect x="1320" y="735" width="125" height="40" rx="6" fill="var(--c-coral-bg)" stroke="var(--c-coral)" stroke-width="1"/>
+    <text class="paper-label" x="1382" y="753" text-anchor="middle" fill="var(--c-coral)">Dolgopolov</text>
+    <text class="paper-sub"   x="1382" y="767" text-anchor="middle" fill="var(--c-coral)">Q-learning · stateless PD</text>
+    <text class="paper-meta"  x="1382" y="789" text-anchor="middle">no LLM · closed form</text>
+  </g>
+
+  <!-- W7: Koster, Tacchetti et al. (population band, RL as mechanism designer) -->
+  <g>
+    <rect x="1540" y="215" width="180" height="44" rx="6" fill="var(--c-pink-bg)" stroke="var(--c-pink)" stroke-width="1"/>
+    <text class="paper-label" x="1630" y="233" text-anchor="middle" fill="var(--c-pink)">Koster, Tacchetti et al.</text>
+    <text class="paper-sub"   x="1630" y="247" text-anchor="middle" fill="var(--c-pink)">deep mechanism design</text>
+  </g>
+
+  <!-- W7: Koster, Pîslar et al. (population band, RL as redistribution designer) -->
+  <g>
+    <rect x="1540" y="298" width="180" height="44" rx="6" fill="var(--c-pink-bg)" stroke="var(--c-pink)" stroke-width="1"/>
+    <text class="paper-label" x="1630" y="316" text-anchor="middle" fill="var(--c-pink)">Koster, Pîslar et al.</text>
+    <text class="paper-sub"   x="1630" y="330" text-anchor="middle" fill="var(--c-pink)">commons redistribution</text>
+    <text class="paper-meta"  x="1630" y="360" text-anchor="middle">CPR game · interpretability frontier</text>
+  </g>
+
+</svg>
+</div>
+
+<div class="section-eyebrow">What this picture is doing</div>
+
+<div class="notes">
+  <div class="note">
+    <h3>Y-axis: what the LLM substitutes for</h3>
+    <p>The chapters use seven colours; the colours encode <em>what method the paper runs</em>, not <em>what the paper is modelling</em>. The Y-axis here is the second question. Reading top-to-bottom: position papers <em>about</em> the field; populations of agents; aggregate effects across many people; one person or persona; and at the bottom, the LLM as a player whose own behaviour is the object of measurement.</p>
+    <p>The bands are not progress — a Week-2 yellow paper is not "behind" a Week-5 brown one. Each band asks a different question; the field's progression has been into <em>more bands at once</em>, not from one band to the next.</p>
+  </div>
+
+  <div class="note">
+    <h3>The three big lineages out of <code>Park 2023</code></h3>
+    <p>Smallville is the W4 paper that fans out into all three Week-5 papers. <strong>Project Sid</strong> scales the move up on two axes at once — more agents <em>and</em> a much longer simulated horizon. The horizon is what actually matters: Smallville's two days reach information diffusion and a Valentine's-day party; Project Sid's longer arc is where Durkheim-shaped phenomena (specialisation, cultural transmission, emergent governance) become observable. It also keeps an explicit cognitive architecture (PIANO) at a moment when individual prediction (<code>Park 2024</code>) had argued long context could replace architecture.</p>
+    <p><strong>Ashery</strong> moves in the opposite direction — strips the agent down to almost nothing — and tests whether the macro mechanism (<code>Centola 2018</code>'s naming-game tipping point) survives the strip-down. <strong>Larooij &amp; Törnberg</strong> apply the move to platforms: a population becomes a policy testbed.</p>
+  </div>
+
+  <div class="note">
+    <h3>The horizontal substitution debate</h3>
+    <p><code>Horton 2023</code> proposed silicon-sampling — anchor an LLM to a persona, run an experiment on it. <code>Park 2024</code> is the strongest empirical case for that proposal, eighteen months later, with two-hour interviews replacing one-paragraph personas. The <strong>thick blue line</strong> is the silicon-sampling lineage carrying Week 2's programmatic move into Week 4's empirical defence.</p>
+    <p>The dashed line between <code>Hewitt</code> and <code>Larooij</code> is the alternative on the other side: instead of simulating the population, ask the LLM directly to forecast the experiment. Two methods that often answer the same policy question and can disagree.</p>
+  </div>
+
+  <div class="note">
+    <h3>The methodological top band</h3>
+    <p>The three position-paper-shaped objects across W2–W4 read as a single conversation: <code>Sun 2025</code> maps the field; <code>Kozlowski &amp; Evans 2025</code> issue a six-weakness validity critique; <code>Anthis 2025</code> respond with a five-challenge optimistic-engineering programme. The <strong>top arrow</strong> is the conversation, not three independent surveys.</p>
+    <p>One absence worth naming: no Week-5 or Week-6 position paper. The empirical 🟫 and Week-6 RL papers have got ahead of the methodological commentary on them.</p>
+  </div>
+
+  <div class="note">
+    <h3>Where RL re-enters the picture (Week 6)</h3>
+    <p>The bottom band gains three agents this week — <code>Xu</code> (LLM + RL on Werewolf), <code>FAIR/CICERO</code> (planner + LLM on Diplomacy), and <code>Dolgopolov</code> (pure Q-learning on a stateless Prisoner's Dilemma). The first two are direct responses to the strategic-bias signal <code>Akata</code> picked up in Week 2: prompt-only LLMs play strategically worse than humans, and adding an explicit optimizer on top of the LLM closes most of the gap. The dashed arrow from <code>Akata</code> across four columns to <code>Xu</code> is that response.</p>
+    <p><code>Dolgopolov</code> sits at the opposite extreme — no LLM at all, a closed-form characterisation of when stateless Q-learners cooperate as a function of learning rate and payoff. The dashed arrow from <code>Ashery</code> down to <code>Dolgopolov</code> is the methodological move from <em>simulated</em> minimal-agent emergence to its <em>analytical</em> limit case.</p>
+    <p><code>McKee</code> is the genuinely new shape — pink in the legend, in the Population band but with the agent <em>acting on</em> the population rather than living inside it. The arrow from <code>Larooij</code> reads as the cohort-relevant transition: from human-designed prosocial interventions (chronological feed, bridging-based ranking) to an RL agent that <em>learns</em> the intervention by playing against simulated humans and is validated on real ones. This is the Week-6 move that generalises furthest into the cohort's experimental-economics background.</p>
+  </div>
+
+  <div class="note">
+    <h3>RL as institution designer (Week 7)</h3>
+    <p>Week 7 takes the pink <code>McKee</code> shape and presses it harder. The two papers — <code>Koster, Tacchetti et al. 2024</code> and <code>Koster, Pîslar et al. 2025</code> — keep the agent <em>acting on</em> the population, but widen its action space from rewiring a fixed network to choosing the <em>payoff rule</em> the population plays under. The first is the programmatic statement: deep RL as a general mechanism-design instrument — name a welfare target, simulate a population, search the rule space. The second points the same machinery at a common-pool resource game and reports the empirical performance/legibility frontier.</p>
+    <p>The arrow from <code>McKee</code> across the divider is the cleanest single trajectory in the syllabus: graph-rewiring planner (2023) → mechanism-design framework (2024) → learned redistribution rule with a measured legitimacy frontier (2025). The design question classical mechanism design settled in closed form has not vanished — it has moved into two choices the diagram cannot draw: <em>which welfare target</em>, and <em>which simulated population</em>.</p>
+  </div>
+
+  <div class="note">
+    <h3>The "missed-mixture" thread (Week-3 §8)</h3>
+    <p>The blue dashed thread links three places where within-prompt distribution structure is reported but unanalysed — <code>Lorè</code>'s bimodal GPT-4 in W2, <code>Centaur</code>'s Fig. 2c bimodal trajectories in W3 (the partial counter-example), and <code>Ashery</code>'s seed-dependent convention bimodality in W5.</p>
+    <p>The thread crosses three colours and four weeks; it is a <em>research-question shape</em> the existing colour scheme does not encode. A project that explicitly recovered behavioural types from any of these three datasets would close the gap between this literature and the behavioural-GT tradition that closed it for humans in 1996 (<code>Fischbacher, Gächter &amp; Fehr</code>).</p>
+  </div>
+
+  <div class="note">
+    <h3>What the picture obscures (and why that's OK)</h3>
+    <p>Two things the diagram drops on purpose: <em>publication date</em> (the X-axis is syllabus order, not chronology — <code>Sun 2025</code> and <code>Anthis 2025</code> were published in the same year despite being plotted three columns apart) and <em>citation graph</em> (only methodologically load-bearing connections are drawn; many additional citations exist).</p>
+    <p>The picture is built to surface the field's <em>methodological geometry</em>, not its bibliometric one. If the geometry is wrong, the picture is the thing to redraw.</p>
+  </div>
+</div>
+
+<div class="section-eyebrow">Open questions about the visual</div>
+<div class="note" style="margin-top: 8px;">
+  <p>Things to push on before this becomes a chapter figure:</p>
+  <p>• Is the Y-axis the right cut? Two alternatives: <em>validation rigor</em> (none → external ground truth) or <em>agent richness</em> (minimal → persona-conditioned). Each ranks the papers differently.</p>
+  <p>• Should <code>Centaur</code> sit higher than the W2/W3 yellows and reds? It predicts individuals, not just measures the model — the current placement may understate it.</p>
+  <p>• Should <code>Willis</code> and <code>Akata</code> climb a band into "population"? Two-agent repeated play is closer to a population-level claim than a single-decision measurement.</p>
+  <p>• Lineage lines: the diagram shows eleven; about a dozen more would be defensible. Which would help vs. clutter?</p>
+  <p>• Is the bottom band's relabel from "the LLM itself" to "the agent itself" the right one? It now houses two LLM-hybrids (<code>Xu</code>, <code>FAIR</code>) and a pure RL learner (<code>Dolgopolov</code>) — the same band but a wider taxonomy of agents than the W2/W3 yellows and reds.</p>
+  <p>• <code>McKee</code> and the two Week-7 <code>Koster</code> papers are plotted in the Population band because their <em>object of intervention</em> is a population. But the agent in each is a single RL designer, not a member of the population — with three such papers now, the case for a dedicated "designer" band above Methodology is stronger than it was at Week 6. Is the current shared-band placement still defensible, or does the designer move deserve its own row?</p>
+</div>
+
+</div>
+</body>
+</html>
