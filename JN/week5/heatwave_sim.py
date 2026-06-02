@@ -182,13 +182,14 @@ def district_temperature(district, day, hour):
 def district_indoor_temperature(district, day, hour, has_ac):
     """Indoor temperature, accounting for AC and overnight non-cooling.
 
-    Note: the AC branch caps at 24 °C, which means AC-haves accumulate zero
-    heat-degree-hours in the outcome model. This is the known artefact in
-    `compute_outcomes` documented in the run-interpretation file.
+    AC-haves are modelled as "have AC but won't run it flat out" — a blend of
+    outdoor and a 24 °C setpoint — so that a heatwave still pushes their indoor
+    temperature above the 26 °C exposure threshold. (Earlier versions clamped to
+    min(outdoor, 24), which gave every AC-have exactly zero heat-degree-hours.)
     """
     outdoor = district_temperature(district, day, hour)
     if has_ac:
-        return min(outdoor, 24.0)
+        return round(0.7 * outdoor + 0.3 * 24.0, 1)
     daily_indoor_avg = (DAILY_PEAKS[day] + DAILY_LOWS[day]) / 2 + 1.0
     return round(0.4 * outdoor + 0.6 * daily_indoor_avg, 1)
 
@@ -610,9 +611,9 @@ def compute_outcomes(decisions_df, agents):
     """Compute per-agent heat-risk score from exposure × decisions × checks × age.
 
     Outcome model is deterministic and uncalibrated — for studying mechanisms,
-    not forecasting. Known artefact: AC-haves get exposure_dh = 0 because
-    `district_indoor_temperature` caps at 24 °C, which never crosses the 26 °C
-    threshold below. See run-interpretation file for the fix.
+    not forecasting. AC-haves now accumulate some exposure because
+    `district_indoor_temperature` blends outdoor with a 24 °C setpoint rather
+    than clamping to it, so they can cross the 26 °C threshold below.
     """
     rows = []
     for pid, a in agents.items():
