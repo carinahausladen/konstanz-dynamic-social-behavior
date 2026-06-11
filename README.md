@@ -17,8 +17,8 @@ Thursdays, 13:30–15:00
 |                             |🟦 6|21 May| [Learning to cooperate](./Topics/06.md)          |
 |                             |🟦 7|28 May| [RL as institution designer](./Topics/07.md)     |
 | **Scientific Contribution** |    |04 Jun| no lecture                                       |
-|                             |🟨 8|11 Jun| Guest Lecture: Dino Carpentras                   |
-|                             |🟨 9|18 Jun| Guest Lecture: Dailisan & Argota Sánchez-Vaquerizo |
+|                             |🟨 8|11 Jun| Guest Lecture: Dailisan & Argota Sánchez-Vaquerizo                   |
+|                             |🟨 9|18 Jun| Guest Lecture: Dino Carpentras |
 |                             |🟨 10|25 Jun| Preliminary Results Presentations               |
 |                             |🟨 11|02 Jul| 1:1 Clinic                                      |
 | **Marketing Your Idea**     |🟩 12|09 Jul| 1:1 Clinic                                      |
