@@ -58,8 +58,8 @@ You may work individually or in small groups.
 Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, submitting the following milestones is mandatory:
 
 - Week 8 (11 Jun): Submit your project idea
-- Week 9 (18 Jun): Present your research narrative and identify the literature gap  
-- Week 10 (25 Jun): Present initial results, explain their relevance, and set up a GitHub repository  
+- Week 9 (18 Jun): Submit your research narrative and identify the literature gap  
+- Week 10 (25 Jun): **Present** initial results, explain their relevance, and set up a GitHub repository  
 - Week 11 (02 Jul): Submit a first full draft  
 - Week 12 (09 Jul): Prepare slides, a practice presentation, and a social media-style summary (no need to publish)
 - Week 13 (16 Jul): Final presentation
