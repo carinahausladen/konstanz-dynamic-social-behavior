@@ -71,6 +71,8 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
 
 - [Disentangling Language Style and Moderator Effects on Political Disagreement](https://github.com/elenasolar/Comp_Model_Project)
 - [Coordination Under Scarcity: A Multi-Agent LLM Simulation of Water Allocation During a Heatwave](https://github.com/BhuvaneshWadhwani/heatwave-water-scarcity-simulation)
+- [Institutional Coordination under Interdependence](https://github.com/ASbrt/competition-under-interdependence)
+- [Cross-Constituency Aggregation for Community Notes](https://github.com/vulonviing/cross-constituency-aggregation-community-notes)
 
 ---
 
