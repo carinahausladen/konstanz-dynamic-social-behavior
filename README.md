@@ -67,15 +67,6 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
 
 ---
 
-## Student Projects
-
-- [Disentangling Language Style and Moderator Effects on Political Disagreement](https://github.com/elenasolar/Comp_Model_Project)
-- [Coordination Under Scarcity: A Multi-Agent LLM Simulation of Water Allocation During a Heatwave](https://github.com/BhuvaneshWadhwani/heatwave-water-scarcity-simulation)
-- [Institutional Coordination under Interdependence](https://github.com/ASbrt/competition-under-interdependence)
-- [Cross-Constituency Aggregation for Community Notes](https://github.com/vulonviing/cross-constituency-aggregation-community-notes)
-
----
-
 ## Readings for Paper Discussions (graded)
 
 
@@ -98,4 +89,13 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
 - Week 7 (28 May) — RL as institution designer
   - [Deep Mechanism Design: Learning Social and Economic Policies for Human Benefit](https://www.pnas.org/doi/10.1073/pnas.2319949121) `Koster 2024`
   - [Deep Reinforcement Learning Can Promote Sustainable Human Behaviour in a Common-Pool Resource Problem](https://doi.org/10.1038/s41467-025-58043-7) `Koster 2025`
+
+---
+
+## Student Projects
+
+- [Disentangling Language Style and Moderator Effects on Political Disagreement](https://github.com/elenasolar/Comp_Model_Project)
+- [Coordination Under Scarcity: A Multi-Agent LLM Simulation of Water Allocation During a Heatwave](https://github.com/BhuvaneshWadhwani/heatwave-water-scarcity-simulation)
+- [Institutional Coordination under Interdependence](https://github.com/ASbrt/competition-under-interdependence)
+- [Cross-Constituency Aggregation for Community Notes](https://github.com/vulonviing/cross-constituency-aggregation-community-notes)
 
