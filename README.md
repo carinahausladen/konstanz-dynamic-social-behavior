@@ -67,6 +67,13 @@ Only final paper (~8 pages / 4,000–8,000 words) will be graded. In addition, s
 
 ---
 
+## Student Projects
+
+- [Disentangling Language Style and Moderator Effects on Political Disagreement](https://github.com/elenasolar/Comp_Model_Project)
+- [Coordination Under Scarcity: A Multi-Agent LLM Simulation of Water Allocation During a Heatwave](https://github.com/BhuvaneshWadhwani/heatwave-water-scarcity-simulation)
+
+---
+
 ## Readings for Paper Discussions (graded)
 
 
